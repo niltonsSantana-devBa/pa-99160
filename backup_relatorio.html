@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório Técnico com Vídeos</title>
+    <style>
+        /* --- ESTILOS VISUAIS --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        /* HEADER */
+        .header { background: #2c3e50; color: white; padding: 25px; text-align: center; }
+        .header h1 { font-size: 1.8rem; margin-bottom: 5px; }
+
+        /* ABAS */
+        .tabs { display: flex; background: #ecf0f1; border-bottom: 1px solid #bdc3c7; }
+        .tab-button {
+            flex: 1; padding: 15px; background: none; border: none;
+            cursor: pointer; font-size: 1rem; font-weight: 600; color: #7f8c8d;
+            transition: 0.3s; border-bottom: 4px solid transparent;
+        }
+        .tab-button.active { color: #2c3e50; border-bottom-color: #3498db; background: white; }
+        .tab-button:hover { background: #dfe6e9; }
+        
+        .tab-content { display: none; padding: 30px; animation: fadeIn 0.4s; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* FORMULÁRIOS */
+        .section-title { color: #2980b9; border-bottom: 2px solid #3498db; padding-bottom: 8px; margin-bottom: 20px; font-size: 1.2rem; }
+        
+        .input-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+        .input-table th { background: #34495e; color: white; padding: 10px; text-align: center; font-size: 0.9rem; }
+        .input-table td { padding: 8px; border: 1px solid #bdc3c7; }
+        .input-table input { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; text-align: center; font-family: monospace; }
+        .input-table input:focus { border-color: #3498db; outline: none; background: #f0f8ff; }
+
+        .form-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 15px; }
+        .form-group label { display: block; font-weight: bold; margin-bottom: 5px; font-size: 0.9rem; }
+        .form-group input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; }
+
+        /* UPLOAD & VIDEO INPUT */
+        .media-group { display: flex; gap: 10px; align-items: flex-end; }
+        .file-upload { flex: 1; border: 2px dashed #bdc3c7; padding: 10px; text-align: center; border-radius: 6px; cursor: pointer; }
+        .video-input { flex: 2; padding: 10px; border: 1px solid #ccc; border-radius: 6px; }
+
+        /* ACTIONS */
+        .actions { text-align: center; margin-top: 20px; padding: 20px; background: #f9f9f9; border-top: 1px solid #ddd; }
+        .btn { padding: 12px 30px; border: none; border-radius: 6px; cursor: pointer; font-size: 1rem; color: white; margin: 0 10px; }
+        .btn-blue { background: #3498db; }
+        .btn-green { background: #27ae60; }
+        
+        /* --- PREVIEW DO RELATÓRIO --- */
+        .preview-container {
+            font-family: 'Times New Roman', Times, serif; color: #000; line-height: 1.5;
+            background: white; padding: 40px; border: 1px solid #ddd;
+        }
+        .rel-header { text-align: center; margin-bottom: 30px; border-bottom: 2px solid black; padding-bottom: 10px; }
+        .rel-h1 { text-transform: uppercase; font-size: 14pt; margin: 10px 0; font-weight: bold; }
+        .rel-h2 { font-family: Arial, sans-serif; font-size: 12pt; border-bottom: 1px solid #999; margin-top: 25px; padding-bottom: 5px; font-weight: bold; page-break-after: avoid; }
+        .rel-h3 { font-family: Arial, sans-serif; font-size: 11pt; margin-top: 15px; font-weight: bold; color: #444; page-break-after: avoid; }
+        
+        .rel-table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 10pt; page-break-inside: avoid; }
+        .rel-table th, .rel-table td { border: 1px solid black; padding: 6px; text-align: center; }
+        .rel-table th { background: #eee; }
+        
+        .rel-calc { background: #f4f4f4; border-left: 4px solid #333; padding: 10px; margin: 10px 0; font-family: 'Courier New', monospace; font-size: 10pt; page-break-inside: avoid; }
+        
+        /* MÍDIA NO RELATÓRIO */
+        .media-container { 
+            display: flex; justify-content: space-around; align-items: center; margin: 15px 0; page-break-inside: avoid; 
+            border: 1px solid #eee; padding: 10px;
+        }
+        .rel-img { max-width: 60%; max-height: 200px; border: 1px solid #ccc; display: block; }
+        .qr-container { text-align: center; width: 30%; }
+        .qr-code { width: 100px; height: 100px; }
+        .qr-label { font-size: 0.8rem; font-family: Arial; margin-top: 5px; display: block; }
+        .video-link { font-size: 0.8rem; color: blue; text-decoration: underline; word-break: break-all; }
+
+        @media print {
+            body, .container { background: none; padding: 0; margin: 0; width: 100%; box-shadow: none; }
+            .header, .tabs, .actions, #tab-dados, #tab-circuitos { display: none !important; }
+            #tab-preview { display: block !important; padding: 0; }
+            .preview-container { border: none; padding: 0; margin: 0; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>Sistema de Relatório com Vídeo</h1>
+        <p>Gere relatórios PDF com QR Codes para seus vídeos</p>
+    </div>
+
+    <div class="tabs">
+        <button class="tab-button active" onclick="openTab('tab-dados')">1. Dados</button>
+        <button class="tab-button" onclick="openTab('tab-circuitos')">2. Medições, Fotos e Vídeos</button>
+        <button class="tab-button" onclick="openTab('tab-preview')">3. Gerar PDF</button>
+    </div>
+
+    <div id="tab-dados" class="tab-content active">
+        <h3 class="section-title">Cabeçalho</h3>
+        <div class="form-row">
+            <div class="form-group">
+                <label>Nomes dos Alunos</label>
+                <input type="text" id="alunos_nomes" placeholder="Ex: Ana, Bruno e Carlos">
+            </div>
+            <div class="form-group">
+                <label>Nome do Professor</label>
+                <input type="text" id="professor_nome" placeholder="Ex: Prof. Roberto">
+            </div>
+            <div class="form-group">
+                <label>Data</label>
+                <input type="date" id="data_rel">
+            </div>
+        </div>
+
+        <h3 class="section-title">Tabela de Resistores</h3>
+        <table class="input-table">
+            <thead>
+                <tr><th>Resistor</th><th>Teórico (Ω)</th><th>Medido (Ω)</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><strong>R1</strong></td><td><input type="number" id="r1_teo" placeholder="1500"></td><td><input type="number" id="r1_med" placeholder="1482"></td></tr>
+                <tr><td><strong>R2</strong></td><td><input type="number" id="r2_teo" placeholder="560"></td><td><input type="number" id="r2_med" placeholder="556"></td></tr>
+                <tr><td><strong>R3</strong></td><td><input type="number" id="r3_teo" placeholder="15"></td><td><input type="number" id="r3_med" placeholder="15.06"></td></tr>
+                <tr><td><strong>R4</strong></td><td><input type="number" id="r4_teo" placeholder="10000"></td><td><input type="number" id="r4_med" placeholder="9736"></td></tr>
+                <tr><td><strong>R5</strong></td><td><input type="number" id="r5_teo" placeholder="560000"></td><td><input type="number" id="r5_med" placeholder="579000"></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="tab-circuitos" class="tab-content">
+        <p style="background: #e1f5fe; padding: 10px; border-radius: 5px; margin-bottom: 20px; font-size: 0.9em;">
+            <strong>Dica:</strong> Cole o link do seu vídeo (YouTube/Drive) e o sistema gerará um QR Code automaticamente no relatório.
+        </p>
+        
+        <h3 class="section-title">Circuito 1: Série</h3>
+        <div class="form-row">
+            <div class="form-group"><label>Medido (Ω)</label><input type="number" id="c1_med"></div>
+        </div>
+        <div class="form-group">
+            <label>Mídia (Foto e Vídeo)</label>
+            <div class="media-group">
+                <input type="file" class="file-upload" onchange="readImage(this, 'img_c1')">
+                <input type="text" class="video-input" id="link_c1" placeholder="Cole o link do vídeo aqui...">
+            </div>
+        </div>
+
+        <hr style="margin: 20px 0; border:0; border-top:1px solid #eee;">
+
+        <h3 class="section-title">Circuito 2: Paralelo</h3>
+        <div class="form-row">
+            <div class="form-group"><label>Medido (Ω)</label><input type="number" id="c2_med"></div>
+        </div>
+        <div class="form-group">
+            <label>Mídia</label>
+            <div class="media-group">
+                <input type="file" class="file-upload" onchange="readImage(this, 'img_c2')">
+                <input type="text" class="video-input" id="link_c2" placeholder="Link do vídeo...">
+            </div>
+        </div>
+
+        <hr style="margin: 20px 0; border:0; border-top:1px solid #eee;">
+
+        <h3 class="section-title">Circuito 3: Misto</h3>
+        <div class="form-row">
+            <div class="form-group"><label>Medido (Ω)</label><input type="number" id="c3_med"></div>
+        </div>
+        <div class="form-group">
+            <label>Mídia</label>
+            <div class="media-group">
+                <input type="file" class="file-upload" onchange="readImage(this, 'img_c3')">
+                <input type="text" class="video-input" id="link_c3" placeholder="Link do vídeo...">
+            </div>
+        </div>
+
+        <hr style="margin: 20px 0; border:0; border-top:1px solid #eee;">
+
+        <h3 class="section-title">Circuito 4: Série com Fonte</h3>
+        <div class="form-row">
+            <div class="form-group"><label>Fonte (V)</label><input type="number" id="c4_v"></div>
+            <div class="form-group"><label>Corrente (A)</label><input type="number" id="c4_imed"></div>
+        </div>
+        <div class="form-group">
+            <label>Mídia</label>
+            <div class="media-group">
+                <input type="file" class="file-upload" onchange="readImage(this, 'img_c4')">
+                <input type="text" class="video-input" id="link_c4" placeholder="Link do vídeo...">
+            </div>
+        </div>
+
+        <hr style="margin: 20px 0; border:0; border-top:1px solid #eee;">
+
+        <h3 class="section-title">Circuito 5: Paralelo com Fonte</h3>
+        <div class="form-row">
+            <div class="form-group"><label>Fonte (V)</label><input type="number" id="c5_v"></div>
+        </div>
+        <div class="form-group">
+            <label>Mídia</label>
+            <div class="media-group">
+                <input type="file" class="file-upload" onchange="readImage(this, 'img_c5')">
+                <input type="text" class="video-input" id="link_c5" placeholder="Link do vídeo...">
+            </div>
+        </div>
+    </div>
+
+    <div id="tab-preview" class="tab-content">
+        <div class="actions">
+            <button class="btn btn-blue" onclick="gerarRelatorio()">🔄 Gerar Relatório</button>
+            <button class="btn btn-green" onclick="window.print()">🖨️ Salvar PDF</button>
+        </div>
+        <div id="relatorio-final" class="preview-container">
+            <p style="text-align:center; color:#666;">Preencha e clique em Gerar.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('data_rel').valueAsDate = new Date();
+    let imagens = {};
+
+    function openTab(id) {
+        document.querySelectorAll('.tab-content').forEach(d => d.classList.remove('active'));
+        document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        event.currentTarget.classList.add('active');
+        if(id === 'tab-preview') gerarRelatorio();
+    }
+
+    function readImage(input, key) {
+        if (input.files && input.files[0]) {
+            let reader = new FileReader();
+            reader.onload = function(e) { imagens[key] = e.target.result; }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    function getVal(id) {
+        let val = parseFloat(document.getElementById(id).value);
+        return isNaN(val) ? 0 : val;
+    }
+
+    // Função para gerar o bloco de mídia (Imagem + QR Code)
+    function generateMediaBlock(imgKey, linkId) {
+        let html = '<div class="media-container">';
+        let hasContent = false;
+
+        // Foto
+        if (imagens[imgKey]) {
+            html += `<img src="${imagens[imgKey]}" class="rel-img">`;
+            hasContent = true;
+        } else {
+            html += `<div style="color:#999; font-style:italic;">(Sem foto anexada)</div>`;
+        }
+
+        // QR Code
+        let videoLink = document.getElementById(linkId).value;
+        if (videoLink && videoLink.trim() !== "") {
+            // API pública para gerar QR Code
+            let qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(videoLink)}`;
+            html += `
+                <div class="qr-container">
+                    <img src="${qrUrl}" class="qr-code">
+                    <span class="qr-label"><strong>VÍDEO</strong><br>Aponte a câmera</span>
+                    <a href="${videoLink}" target="_blank" class="video-link">Abrir Link</a>
+                </div>
+            `;
+            hasContent = true;
+        }
+
+        html += '</div>';
+        return hasContent ? html : '';
+    }
+
+    function gerarRelatorio() {
+        const R1 = { teo: getVal('r1_teo'), med: getVal('r1_med') };
+        const R2 = { teo: getVal('r2_teo'), med: getVal('r2_med') };
+        const R3 = { teo: getVal('r3_teo'), med: getVal('r3_med') };
+        const R4 = { teo: getVal('r4_teo'), med: getVal('r4_med') };
+        const R5 = { teo: getVal('r5_teo'), med: getVal('r5_med') };
+
+        // Cálculos
+        const c1_teo = R1.teo + R2.teo + R3.teo;
+        let inv_sum = (1/R1.teo) + (1/R2.teo) + (1/R3.teo);
+        const c2_teo = inv_sum ? 1 / inv_sum : 0;
+        const c3_teo = c2_teo + R5.teo;
+        
+        const c4_r_total = R3.teo + R2.teo + R5.teo;
+        const c4_v = getVal('c4_v');
+        const c4_i_ua = c4_r_total ? (c4_v / c4_r_total) * 1000000 : 0;
+
+        const c5_v = getVal('c5_v');
+        const c5_i1 = (c5_v / 330) * 1000;
+        const c5_i2 = (c5_v / 1000) * 1000;
+        const c5_i3 = (c5_v / 2200) * 1000;
+
+        const alunos = document.getElementById('alunos_nomes').value;
+        const prof = document.getElementById('professor_nome').value;
+        const data = document.getElementById('data_rel').value.split('-').reverse().join('/');
+
+        const html = `
+            <div class="rel-header">
+                <h3>CURSO TÉCNICO EM DESENVOLVIMENTO DE SISTEMAS</h3>
+                <p>HARDWARE E ELETRÔNICA BÁSICA</p>
+            </div>
+            
+            <h1 class="rel-h1" style="text-align:center;">RELATÓRIO TÉCNICO: MONTAGEM E MEDIÇÃO</h1>
+            
+            <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 20px;">
+                <p><strong>Professor:</strong> ${prof}</p>
+                <p><strong>Equipe:</strong> ${alunos}</p>
+                <p><strong>Data:</strong> ${data}</p>
+            </div>
+
+            <h2 class="rel-h2">1. Tabela de Componentes</h2>
+            <table class="rel-table">
+                <tr><th>Comp.</th><th>Teórico (Ω)</th><th>Medido (Ω)</th><th>Desvio (%)</th></tr>
+                <tr><td>R1</td><td>${R1.teo}</td><td>${R1.med}</td><td>${R1.teo ? ((R1.med-R1.teo)/R1.teo*100).toFixed(2) : 0}%</td></tr>
+                <tr><td>R2</td><td>${R2.teo}</td><td>${R2.med}</td><td>${R2.teo ? ((R2.med-R2.teo)/R2.teo*100).toFixed(2) : 0}%</td></tr>
+                <tr><td>R3</td><td>${R3.teo}</td><td>${R3.med}</td><td>${R3.teo ? ((R3.med-R3.teo)/R3.teo*100).toFixed(2) : 0}%</td></tr>
+                <tr><td>R5</td><td>${R5.teo}</td><td>${R5.med}</td><td>${R5.teo ? ((R5.med-R5.teo)/R5.teo*100).toFixed(2) : 0}%</td></tr>
+            </table>
+
+            <h2 class="rel-h2">2. Análise dos Circuitos</h2>
+
+            <h3 class="rel-h3">2.1. Circuito Série</h3>
+            ${generateMediaBlock('img_c1', 'link_c1')}
+            <div class="rel-calc">
+                Teórico: ${c1_teo} Ω <br> Medido: ${getVal('c1_med')} Ω
+            </div>
+
+            <h3 class="rel-h3">2.2. Circuito Paralelo</h3>
+            ${generateMediaBlock('img_c2', 'link_c2')}
+            <div class="rel-calc">
+                Teórico: ${c2_teo.toFixed(2)} Ω <br> Medido: ${getVal('c2_med')} Ω
+            </div>
+
+            <h3 class="rel-h3">2.3. Circuito Misto</h3>
+            ${generateMediaBlock('img_c3', 'link_c3')}
+            <div class="rel-calc">
+                Teórico: ${c3_teo.toFixed(2)} Ω <br> Medido: ${getVal('c3_med')} Ω
+            </div>
+
+            <h3 class="rel-h3">2.4. Circuito com Fonte (Série)</h3>
+            ${generateMediaBlock('img_c4', 'link_c4')}
+            <div class="rel-calc">
+                Corrente Teórica: ${c4_i_ua.toFixed(2)} µA
+            </div>
+
+            <h3 class="rel-h3">2.5. Circuito com Fonte (Paralelo)</h3>
+            ${generateMediaBlock('img_c5', 'link_c5')}
+            <table class="rel-table">
+                <tr><td>330 Ω</td><td>${c5_i1.toFixed(2)} mA</td></tr>
+                <tr><td>1 kΩ</td><td>${c5_i2.toFixed(2)} mA</td></tr>
+                <tr><td>2.2 kΩ</td><td>${c5_i3.toFixed(2)} mA</td></tr>
+            </table>
+
+            <br><br>
+            <div style="text-align:center; border-top:1px solid black; width:50%; margin: 20px auto;">Visto do Professor</div>
+        `;
+
+        document.getElementById('relatorio-final').innerHTML = html;
+    }
+</script>
+
+</body>
+</html>
