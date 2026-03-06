@@ -1,1 +1,56 @@
-/* Add styles here */
+/* RESET E CONFIGURAÇÕES GERAIS */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body {
+    background-color: rgb(8, 11, 216);
+    background-image: url("assets/fundo.webp");
+    background-repeat: no-repeat;
+}
+
+h1 {
+    text-align: center;
+    color: rgb(245, 245, 247);
+
+}
+
+img {
+    max-width: 30%;
+    display: block;
+    height: auto;
+    margin: 0 auto;
+
+}
+
+p {
+    text-align: justify;
+    font-size: 20px;
+    margin-left: 200px;
+    margin-right: 200px;
+    color: aqua;
+}
+
+hr {
+    max-width: 70%;
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+    display: block;
+    height: auto;
+    color: black;
+    margin-left: 200px;
+    margin-bottom: 20px;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    font-style: italic;
+    text-align: center;
+
+}
