@@ -1,0 +1,28 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
+}
+
+/* .hidden {
+    display: none;
+} */
+
+h1{
+    text-align: center;
+    color: #000000;
+    font-family: 'Arial', sans-serif;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+body{
+    background-color: #000cf1;
+}
+.container2{
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}

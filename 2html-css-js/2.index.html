@@ -8,25 +8,42 @@ está aprovado ou reprovado -->
 
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calcule sua média</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="container">
-        <h1>Gerador de notas</h1>
-        
-        <label for="nome">Informe seu nome </label>
-        <input type="text" id="nomeImput" placeholder="Ex.:Lucas">
-        <label for="numeroInput">Digite sua 1° nota </label>
-        <input type="number" id="numeroInput" placeholder="Ex.:5">
-        <label for="numeroInput">Digite sua 2° nota </label>
-        <input type="number" id="numeroInput" placeholder="Ex.:5">
-        <button id="gerarBotao"> GerarMedia </button>
+        <div class="container2">
+            <h1>Gerador de notas</h1>
+            <!-- nome: -->
+            <label for="nome">Informe seu nome </label>
+            <input type="text" id="nomeImput" placeholder="Ex.:Lucas">
+
+            <!-- nota1: -->
+            <label for="numeroInput">Digite sua 1° nota </label>
+            <input type="number" id="Nota1" placeholder="Ex.:5">
+
+            <!-- nota2: -->
+            <label for="numeroInput">Digite sua 2° nota </label>
+            <input type="number" id="Nota2" placeholder="Ex.:5">
+
+            <button id="gerarBotao" onclick="media()"> GerarMedia </button>
+
+
+        </div>
+        <!-- <div class="imagens"> <img src="assets/pngwing.com.png" alt="divisao"></div> -->
+        <div id="resultadoMedia" class="hidden">
+            <p id="resNome"></p>
+            <p id="resStatus"></p>
+            <p id="resMedia"></p>
+        </div>
     </div>
-    <div id="resultadoMedia"></div>
-    
+    <script src="script.js"></script>
 </body>
+
 </html>
