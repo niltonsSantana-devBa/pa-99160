@@ -1,28 +1,184 @@
-*{
+* {
     margin: 0;
     padding: 0;
-    box-sizing: border-box
+    box-sizing: border-box;
 }
 
-/* .hidden {
-    display: none;
-} */
+/* Importando fontes: 'Cinzel' (épico) e 'Courier Prime' (relatório militar) */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Courier+Prime:wght@400;700&display=swap');
 
-h1{
-    text-align: center;
-    color: #000000;
-    font-family: 'Arial', sans-serif;
-    font-size: 2em;
-    margin-bottom: 20px;
+body {
+    /* Fundo escuro imitando a escuridão fora das muralhas */
+    background-color: #1a1815;
+    background-image: radial-gradient(circle at center, #2d2926 0%, #0d0c0a 100%);
+    font-family: 'Courier Prime', monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #3e2723;
 }
-body{
-    background-color: #000cf1;
+
+.container {
+    /* Fundo imitando pergaminho antigo com uma textura sutil */
+    background-color: #e6ddc5;
+    background-image: 
+        linear-gradient(rgba(139, 115, 85, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(139, 115, 85, 0.05) 1px, transparent 1px);
+    background-size: 15px 15px; /* Cria um leve aspecto de papel pautado/mapa */
+    
+    border: 3px solid #3e2723; /* Borda de couro escuro */
+    border-radius: 2px;
+    padding: 35px 30px; /* Um pouco mais de espaço interno */
+    width: 360px;
+    
+    /* Sombra pesada projetada e sombra interna de envelhecimento */
+    box-shadow: 12px 12px 20px rgba(0, 0, 0, 0.8), inset 0 0 50px rgba(100, 75, 50, 0.3);
+    position: relative;
 }
-.container2{
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
+
+/* =========================================
+   TACHAS DE METAL NOS 4 CANTOS
+   ========================================= */
+.container::before, .container::after {
+    content: ""; position: absolute; width: 12px; height: 12px;
+    background-color: #4a4a4a; /* Cor de ferro */
+    border-radius: 50%;
+    /* Efeito 3D para o prego */
+    box-shadow: inset -3px -3px 5px rgba(0,0,0,0.7), 2px 2px 3px rgba(0,0,0,0.5);
+}
+.container::before { top: 12px; left: 12px; } /* Canto superior esquerdo */
+.container::after { top: 12px; right: 12px; } /* Canto superior direito */
+
+/* Criando os pinos inferiores usando um truque visual com uma tag inventada ou via div se tivesse no HTML. 
+Como não podemos mudar o HTML, vamos focar nos superiores, mas deixá-los mais realistas! */
+
+h1 {
+    font-family: 'Cinzel', serif;
+    color: #6b0f0f; /* Vermelho sangue um pouco mais vivo */
+    font-size: 1.8rem;
     text-align: center;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 0;
+    border-bottom: 2px solid #3e2723;
+    padding-bottom: 12px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2); /* Leve sombra no título */
+}
+
+label {
+    display: block;
     margin-top: 20px;
+    font-weight: bold;
+    color: #2b1c19;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 6px;
+    background-color: #efe8d5; /* Papel ligeiramente mais claro */
+    color: #111;
+    border: 1px solid #8d6e63;
+    border-left: 4px solid #4e342e; /* Detalhe lateral no input */
+    font-family: 'Courier Prime', monospace;
+    font-size: 1.1rem;
+    box-sizing: border-box;
+    transition: all 0.3s;
+    /* Sombra interna para parecer que o campo está afundado no papel */
+    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.1);
+}
+
+input:focus {
+    outline: none;
+    border-left-color: #6b0f0f; /* Fica vermelho sangue ao focar */
+    background-color: #fff;
+    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.05), 0 0 8px rgba(107, 15, 15, 0.3);
+}
+
+#gerarBotao {
+    width: 100%;
+    margin-top: 30px;
+    padding: 15px;
+    background-color: #2e472d; /* Verde Survey Corps */
+    color: #e6ddc5; 
+    border: 2px solid #152414;
+    font-family: 'Cinzel', serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: all 0.2s;
+    /* Sombra dura estilo bloco pesado */
+    box-shadow: 5px 5px 0px #152414;
+}
+
+#gerarBotao:hover {
+    background-color: #3b5a39; /* Clareia levemente */
+    transform: translateY(-2px); /* Dá uma leve subida */
+    box-shadow: 7px 7px 0px #152414; /* Aumenta a sombra */
+}
+
+/* Efeito de clique mais pesado e realista */
+#gerarBotao:active {
+    transform: translate(5px, 5px);
+    box-shadow: 0px 0px 0px #152414;
+    background-color: #6b0f0f; /* Cor de sangue ao confirmar */
+    border-color: #380404;
+}
+
+/* Classe para o JS funcionar */
+.hidden {
+    display: none !important;
+}
+
+/* =========================================
+   ÁREA DE RESULTADOS (DOCUMENTO ANEXO)
+   ========================================= */
+#resultadoMedia {
+    margin-top: 25px;
+    background-color: #f2ebd9; /* Papel mais novo para contraste */
+    border: 4px double #5d4037; /* Borda dupla estilo documento oficial */
+    padding: 20px;
+    position: relative;
+    box-shadow: inset 0 0 15px rgba(139, 115, 85, 0.2);
+}
+
+/* Efeito de "carimbo" ou fita no topo do resultado */
+#resultadoMedia::before {
+    content: "DADOS DA AVALIAÇÃO";
+    position: absolute;
+    top: -12px;
+    left: 20px;
+    background-color: #5d4037;
+    color: #e6ddc5;
+    font-size: 0.8rem;
+    padding: 2px 8px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+#resultadoMedia p {
+    margin: 12px 0;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-bottom: 1px solid rgba(188, 170, 164, 0.5); /* Linha mais sutil */
+    padding-bottom: 5px;
+}
+
+/* Formatando os IDs que o seu JS vai preencher */
+#resNome::before { content: "Recruta: "; color: #5d4037; font-weight: normal;}
+#resStatus::before { content: "Status.: "; color: #5d4037; font-weight: normal;}
+#resMedia::before { content: "Média..: "; color: #5d4037; font-weight: normal;}
+
+/* O seu JS já injeta a cor verde/vermelha no Status */
+#resStatus {
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 1px;
 }

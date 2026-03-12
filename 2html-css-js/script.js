@@ -17,12 +17,12 @@ function media(){
     document.getElementById("resultadoMedia").classList.remove("hidden");
 
    //Situaçao do aluno
-   if(media >= 7){
+        if(media >= 7){
     document.getElementById("resStatus").textContent = "Aprovado";
     document.getElementById("resStatus").style.color = "green";
-   }else{
+    }
+    else{
     document.getElementById("resStatus").textContent = "Reprovado";
     document.getElementById("resStatus").style.color = "red";
-   }
-  // divRes.classList.remove("hidden");
+    }
 }

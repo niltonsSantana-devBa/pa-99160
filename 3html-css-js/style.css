@@ -1,0 +1,228 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Importando fontes com estilo de mangá e impacto */
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Oswald:wght@700&display=swap');
+
+body {
+    /* Fundo roxo escuro com listras diagonais (Stand Aura) */
+    background-color: #2b005e;
+    background-image: repeating-linear-gradient(45deg, #2b005e, #2b005e 10px, #3c0080 10px, #3c0080 20px);
+    font-family: 'Oswald', sans-serif;
+    color: #fff;
+    /* Ajustado para organizar o header no topo e o conteúdo abaixo */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding-top: 20px; /* Espaço para o header */
+}
+
+/* =========================================
+   ESTILIZAÇÃO DO LOGOTIPO (NOVO)
+   ========================================= */
+.main-header {
+    width: 100%;
+    max-width: 1200px; /* Largura máxima opcional */
+    padding: 10px 20px;
+    display: flex;
+    justify-content: flex-start; /* Alinha o logo à esquerda. Mude para center se preferir centralizado */
+    align-items: center;
+    /* NOVO: Garante que o header fique fixo no topo da página ao rolar (Opcional) */
+    /* position: fixed; top: 0; left: 0; z-index: 1000; background-color: rgba(43, 0, 94, 0.9); */
+}
+
+.logo-image {
+    /* REDUZINDO O TAMANHO: Tamanho típico de um logo */
+    height: 60px; /* Ajuste conforme necessário */
+    width: auto; /* Mantém a proporção */
+    
+    /* ESTILO LOGO JOJO: Adicionando um fundo e borda para dar destaque */
+    background-color: #ffd700; /* Dourado DIO */
+    border: 3px solid #000;
+    border-radius: 8px; /* Cantos levemente arredondados */
+    padding: 5px; /* Espaço interno */
+    
+    /* Sombra dura projetada imitando o estilo mangá/quadrinhos */
+    filter: drop-shadow(5px 5px 0px rgba(0, 0, 0, 0.9));
+    
+    /* Mantendo a animação de flutuação, mas mais suave para um logo */
+    animation: logoFloat 2s infinite alternate ease-in-out;
+    
+    transition: transform 0.2s ease; /* Para o efeito de hover */
+}
+
+/* Criando o movimento suave do logo */
+@keyframes logoFloat {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-5px); }
+}
+
+/* Efeito ao passar o mouse no logo */
+.logo-image:hover {
+    transform: scale(1.1); /* Aumenta levemente */
+    filter: drop-shadow(8px 8px 0px rgba(0, 0, 0, 0.9));
+}
+
+/* Se você ainda tiver a imagem grande no HTML, estilize-a separadamente */
+.stand-image {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    height: 250px;
+    width: auto;
+    filter: drop-shadow(15px 15px 0px rgba(0, 0, 0, 0.9));
+    animation: standFloat 3s infinite alternate ease-in-out;
+    opacity: 0.8; /* Levemente transparente para não atrapalhar */
+    z-index: -1; /* Fica atrás de tudo */
+}
+
+@keyframes standFloat {
+    0% { transform: translateY(0px) rotate(0deg); }
+    100% { transform: translateY(-15px) rotate(2deg); }
+}
+
+/* =========================================
+   ESTILIZAÇÃO DA CALCULADORA (MANTIDA)
+   ========================================= */
+/* Adicionado margem superior para compensar o header fixo se usar */
+.conteiner {
+    background-color: #512da8; /* Roxo Star Platinum */
+    border: 5px solid #ffd700; /* Dourado DIO */
+    padding: 30px;
+    width: 350px;
+    position: relative;
+    box-shadow: 15px 15px 0px #000; 
+    margin-top: 50px; /* Espaço entre o header e a calculadora */
+}
+
+/* ... (resto do CSS da calculadora permanece igual) ... */
+.conteiner::before {
+    content: "ゴゴゴゴ";
+    position: absolute;
+    top: -40px;
+    left: -15px;
+    color: #ff0055; /* Rosa choque */
+    font-family: 'Bangers', cursive;
+    font-size: 2.5rem;
+    text-shadow: 3px 3px 0px #000;
+    animation: menacingFloat 1.5s infinite alternate ease-in-out;
+}
+
+@keyframes menacingFloat {
+    0% { transform: translateY(0) scale(1); }
+    100% { transform: translateY(-10px) scale(1.1); }
+}
+
+h1 {
+    font-family: 'Bangers', cursive;
+    color: #ffd700;
+    font-size: 1.8rem;
+    text-align: center;
+    letter-spacing: 2px;
+    margin-top: 0;
+    text-shadow: 3px 3px 0px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    color: #00ff88; /* Verde Hierophant Green */
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 0px #000;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    background-color: #000;
+    color: #fff;
+    border: 3px solid #ffd700;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.2rem;
+    box-sizing: border-box;
+}
+
+input:focus {
+    outline: none;
+    background-color: #111;
+    border-color: #ff0055;
+    box-shadow: inset 0px 0px 10px #ff0055;
+}
+
+#gerarBotao {
+    width: 100%;
+    margin-top: 25px;
+    padding: 15px;
+    background-color: #ffd700;
+    color: #000;
+    border: 4px solid #000;
+    font-family: 'Bangers', cursive;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    cursor: pointer;
+    box-shadow: 8px 8px 0px #000;
+    transition: all 0.1s;
+}
+
+#gerarBotao:active {
+    transform: translate(8px, 8px);
+    box-shadow: 0px 0px 0px #000;
+    background-color: #ffaa00; /* Laranja Hamon */
+}
+
+.hidden {
+    display: none;
+}
+
+#resultadoMedia {
+    margin-top: 25px;
+    background-color: #000;
+    border: 3px dashed #ff0055;
+    padding: 15px;
+}
+
+#resultadoMedia p {
+    margin: 10px 0;
+    font-size: 1.2rem;
+    color: #fff;
+    border-bottom: 2px solid #222;
+    padding-bottom: 5px;
+    text-transform: uppercase;
+}
+
+#resultadoMedia span {
+    float: right;
+    color: #00ff88;
+    font-size: 1.5rem;
+    text-shadow: 2px 2px 0px #000;
+}
+
+.logo-image {
+    /* AUMENTAMOS O TAMANHO AQUI: de 60px para 150px */
+    height: 150px; 
+    width: auto; /* Deixe em auto para a imagem não ficar esticada ou esmagada */
+    
+    /* Mantendo o estilo JoJo */
+    background-color: #ffd700; /* Dourado DIO */
+    border: 3px solid #000;
+    border-radius: 8px; 
+    padding: 5px; 
+    
+    /* Sombra e Animação */
+    filter: drop-shadow(8px 8px 0px rgba(0, 0, 0, 0.9));
+    animation: logoFloat 2s infinite alternate ease-in-out;
+    transition: transform 0.2s ease; 
+}
+
+/* Efeito ao passar o mouse (ajustado para o novo tamanho) */
+.logo-image:hover {
+    transform: scale(1.05); /* Aumenta um pouquinho ao passar o mouse */
+    filter: drop-shadow(12px 12px 0px rgba(0, 0, 0, 0.9));
+}
