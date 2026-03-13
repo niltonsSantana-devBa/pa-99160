@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obrigatoriedade de votação</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Obrigatoriedade de votação</h1>
+    <div class="conteiner">
+        <label for="idadeInput">Digite sua idade:</label>
+        <input type="number" id="idadeInput" placeholder="Ex.: 18">
+        
+        <button id="gerarBotao" onclick="resultado()"> Gerar resultado </button>
+    </div>
+
+    <div id="resultado" class="hidden">
+        <p id="resStatus"></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
