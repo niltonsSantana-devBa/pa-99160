@@ -3,20 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Obrigatoriedade de votação</title>
+    <title>Pode Votar? - Tema Spider-Man</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Obrigatoriedade de votação</h1>
-    <div class="conteiner">
-        <label for="idadeInput">Digite sua idade:</label>
-        <input type="number" id="idadeInput" placeholder="Ex.: 18">
-        
-        <button id="gerarBotao" onclick="resultado()"> Gerar resultado </button>
-    </div>
 
-    <div id="resultado" class="hidden">
-        <p id="resStatus"></p>
+    <div class="container">
+        <img src="/4html-css-js/assets/logo_tipo-removebg-preview.png" alt="Logo tipo" id="imagemHeroi">
+
+        <h1>POSSO VOTAR?</h1>
+        <p id="subtitle">Usa o teu sentido aranha eleitoral!</p>
+        
+        <input type="number" id="idadeInput" placeholder="Idade">
+        <button onclick="resultado()">VERIFICAR</button>
+        
+        <div id="resultado" class="hidden">
+            <p id="resStatus"></p>
+        </div>
     </div>
 
     <script src="script.js"></script>

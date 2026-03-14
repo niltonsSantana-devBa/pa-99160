@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;0,700;0,900;1,900&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    /* Fonte "Kanit" - Tem um formato agressivo e inclinado, muito usado em animes */
+    font-family: 'Kanit', sans-serif; 
+}
+
+body {
+    /* Papel de parede épico do Dragon Ball Z (Shenlong). Fundo laranja de backup. */
+    background-color: #e65c00; 
+    background-image: 
+        linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)),
+        url('/6html-css-js/assets/dragonball-super-7680x4320.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    /* O TRUQUE DEFINITIVO DE CENTRALIZAÇÃO */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Isso alinha TUDO no centro (Logo e Título) */
+
+    /* Cores do Kimono do Goku (Azul escuro com borda dupla Laranja e Amarela) */
+    background-color: #0b2e59; 
+    border: 6px solid #ff5e00; 
+    box-shadow: 0 0 0 4px #ffd700, 0 15px 40px rgba(0, 0, 0, 0.9);
+    border-radius: 10px;
+    
+    width: 100%;
+    max-width: 450px;
+    padding: 35px;
+    position: relative;
+}
+
+/* Força o formulário a ocupar o espaço todo dentro do container flex */
+form {
+    width: 100%;
+}
+
+/* =========================================
+   A LOGO: PEQUENA E TOTALMENTE CENTRALIZADA
+   ========================================= */
+#logoCaderno {
+    width: 65px !important; 
+    height: auto !important;
+    margin-bottom: 15px !important;
+    /* Sem margens malucas, o flexbox do .container já faz o trabalho! */
+    filter: drop-shadow(0px 0px 10px rgba(255, 215, 0, 0.8));
+}
+/* ========================================= */
+
+h2 {
+    color: #ffd700; /* Amarelo Dourado */
+    font-weight: 900;
+    font-size: 2.2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 3px 3px 0px #ff5e00, 5px 5px 0px #000000;
+    margin-bottom: 25px;
+    text-align: center;
+    font-style: italic; /* Estilo de título de episódio de DBZ */
+}
+
+.form-group {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 1rem;
+    color: #ff9900; 
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* Inputs simulando o visor verde do Scouter (Rastreador) */
+input {
+    width: 100%;
+    padding: 12px 15px;
+    background-color: rgba(0, 30, 0, 0.7); 
+    border: 2px solid #33cc33; 
+    color: #66ff66; /* Texto verde neon */
+    font-size: 1.1rem;
+    font-weight: 600;
+    outline: none;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+input::placeholder {
+    color: #1f7a1f;
+    font-weight: 400;
+}
+
+input:focus {
+    background-color: rgba(0, 50, 0, 0.9);
+    box-shadow: 0 0 15px rgba(51, 204, 51, 0.5);
+}
+
+/* BOTÃO DE AÇÃO */
+button {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(180deg, #ff9900 0%, #ff5e00 100%);
+    color: #ffffff;
+    border: 3px solid #ffd700;
+    border-radius: 6px;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-style: italic;
+    letter-spacing: 2px;
+    cursor: pointer;
+    margin-top: 10px;
+    text-shadow: 2px 2px 0px #000000;
+    box-shadow: 0 5px 15px rgba(255, 94, 0, 0.5);
+    transition: all 0.2s ease; 
+}
+
+button:hover {
+    background: linear-gradient(180deg, #ffd700 0%, #ff9900 100%);
+    color: #0b2e59;
+    text-shadow: none;
+    box-shadow: 0 0 20px #ffd700;
+    transform: scale(1.03);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* CAIXA DE RESULTADO */
+#resultado {
+    width: 100%;
+    margin-top: 25px;
+    padding: 20px;
+    background-color: #05162b;
+    border: 2px solid #ff5e00;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #ffffff;
+}
+
+#resultado p {
+    margin-bottom: 8px;
+}
+
+#resultado strong {
+    color: #ffd700;
+}
+
+/* APROVADO: Modo Super Saiyajin */
+.aprovado {
+    border-color: #ffd700 !important; 
+    background: radial-gradient(circle, rgba(255,215,0,0.2) 0%, rgba(11,46,89,1) 100%) !important;
+}
+
+/* NEGADO: Ataque de Ki Vermelho */
+.negado {
+    border-color: #ff0000 !important; 
+    background: radial-gradient(circle, rgba(255,0,0,0.2) 0%, rgba(11,46,89,1) 100%) !important;
+}
+
+.status {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 2px dashed rgba(255, 255, 255, 0.2);
+    font-weight: 900;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    text-align: center;
+    font-style: italic;
+}
+
+.aprovado .status { color: #ffd700; text-shadow: 0 0 10px rgba(255,215,0,0.8); }
+.negado .status { color: #ff3333; text-shadow: 0 0 10px rgba(255,0,0,0.8); }

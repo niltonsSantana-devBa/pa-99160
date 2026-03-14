@@ -4,123 +4,189 @@
     box-sizing: border-box;
 }
 
-/* Importando a fonte pixelada para dar o visual de Minecraft */
-@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+/* Fonte estilo quadrinhos */
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
 
 body {
-    /* Fundo imitando a textura de pedra/sujeira escura (Stone) */
-    background-color: #595959; 
+    /* Fundo com gradiente noturno e textura sutil de teia/grade */
+    background: radial-gradient(circle at center, #0a192f 0%, #020c1b 100%);
     background-image: 
-        linear-gradient(45deg, #515151 25%, transparent 25%, transparent 75%, #515151 75%, #515151), 
-        linear-gradient(45deg, #515151 25%, transparent 25%, transparent 75%, #515151 75%, #515151);
-    background-size: 32px 32px;
-    background-position: 0 0, 16px 16px;
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 30px 30px;
     
     color: #333;
-    font-family: 'VT323', monospace; /* Fonte estilo pixel */
+    font-family: 'Bangers', cursive;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    overflow: hidden;
 }
 
 .container {
     text-align: center;
-    /* O clássico cinza da interface (GUI) do Minecraft */
-    background-color: #C6C6C6; 
-    padding: 30px;
-    /* Bordas 3D estilo bloco: claras em cima/esquerda, escuras embaixo/direita */
-    border-top: 6px solid #FFFFFF;
-    border-left: 6px solid #FFFFFF;
-    border-bottom: 6px solid #555555;
-    border-right: 6px solid #555555;
-    box-shadow: 10px 10px 0px rgba(0,0,0,0.5); /* Sombra dura de pixel art */
+    /* Fundo azul vibrante com bordas pesadas de HQ */
+    background: linear-gradient(135deg, #005697 0%, #003366 100%);
+    padding: 40px;
+    border-radius: 15px;
+    border: 4px solid #000; /* Borda preta grossa de quadrinhos */
+    
+    /* Sombra sólida clássica de Pop Art / Quadrinhos */
+    box-shadow: 15px 15px 0px #ED1D24, 15px 15px 0px 4px #000; 
+    
+    /* Leve animação de flutuação */
+    animation: float 4s ease-in-out infinite;
+    max-width: 500px;
+    width: 90%;
+    
+    /* Importante: permite posicionar o logotipo solto por cima */
+    position: relative; 
 }
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* ESTILIZAÇÃO DO LOGOTIPO / IMAGEM DO HERÓI */
+#imagemHeroi {
+    width: 130px; /* Tamanho da imagem. Aumente ou diminua se precisar */
+    height: auto;
+    
+    /* Posiciona a imagem meio para fora do container para dar efeito 3D de gibi */
+    position: absolute;
+    top: -65px; /* Puxa a imagem para cima. Ajuste dependendo do tamanho da sua imagem */
+    left: 50%;
+    transform: translateX(-50%); /* Centraliza perfeitamente no meio do eixo X */
+    
+    /* Fundo circular branco com borda preta */
+    background-color: #FFF;
+    border: 4px solid #000;
+    border-radius: 50%;
+    
+    /* Sombra de quadrinhos que combina com a caixa principal */
+    box-shadow: 5px 5px 0px #ED1D24, 5px 5px 0px 2px #000;
+    
+    /* Animação de entrada suave */
+    animation: popInLogo 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 10;
+}
+
+@keyframes popInLogo {
+    0% { transform: translateX(-50%) scale(0) rotate(-20deg); opacity: 0; }
+    100% { transform: translateX(-50%) scale(1) rotate(0deg); opacity: 1; }
+}
+
+/* Efeito ao passar o mouse na imagem (o sentindo aranha formigando) */
+#imagemHeroi:hover {
+    transform: translateX(-50%) scale(1.1) rotate(5deg);
+    transition: transform 0.2s ease;
+    border-color: #FFEB3B; /* Borda fica amarela no hover */
+}
+
 
 h1 {
-    /* Amarelo clássico dos textos de título do Minecraft */
-    color: #FFFF55; 
-    font-size: 4rem;
-    letter-spacing: 2px;
-    margin-bottom: 5px;
-    /* Sombra cinza escura característica da fonte do jogo */
-    text-shadow: 4px 4px 0px #3E3E15; 
-}
-
-#statusText {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    height: 30px;
-    color: #333333;
-    text-shadow: 2px 2px 0px #999;
-}
-
-/* Criando a grade de 3x3 estilo slots de inventário */
-.board {
-    display: grid;
-    grid-template-columns: repeat(3, 100px);
-    grid-template-rows: repeat(3, 100px);
-    gap: 8px; /* Espaço entre os quadrados */
-    background-color: #C6C6C6; 
-    margin-bottom: 30px;
-    margin-left: auto;
-    margin-right: auto;
-    width: fit-content;
-}
-
-.cell {
-    /* Fundo dos slots do inventário (cinza escuro) */
-    background-color: #8B8B8B; 
-    /* Bordas invertidas para parecer um buraco/slot afundado */
-    border-top: 4px solid #373737;
-    border-left: 4px solid #373737;
-    border-bottom: 4px solid #FFFFFF;
-    border-right: 4px solid #FFFFFF;
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    /* Título estilo logo clássico */
+    color: #FFEB3B; 
     font-size: 5rem;
-    cursor: pointer;
+    letter-spacing: 4px;
+    margin-bottom: 5px;
+    margin-top: 50px; /* Dá um espaço extra para o logotipo não cobrir o título */
+    line-height: 1.1;
+    /* Múltiplas sombras: contorno vermelho e sombra preta */
+    text-shadow: 
+        -2px -2px 0 #ED1D24, 
+         2px -2px 0 #ED1D24, 
+        -2px  2px 0 #ED1D24, 
+         2px  2px 0 #ED1D24,
+         6px  6px 0px #000; 
 }
 
-/* Efeito ao passar o mouse imitando a seleção de um bloco */
-.cell:hover {
-    background-color: #9E9E9E;
-    /* Cria aquela fina linha branca de seleção do Minecraft */
-    outline: 2px solid rgba(255, 255, 255, 0.5); 
-    outline-offset: -6px;
-}
-
-/* Estilos dinâmicos para o X e a O */
-.cell.x {
-    color: #55FFFF; /* Ciano (Cor do Diamante) */
-    text-shadow: 4px 4px 0px #1A4D4D; /* Sombra escura para dar profundidade */
-}
-
-.cell.o {
-    color: #FF5555; /* Vermelho (Cor da Redstone) */
-    text-shadow: 4px 4px 0px #4D1A1A;
-}
-
-/* Botão estilo clássico do Minecraft */
-#restartBtn {
-    padding: 10px 30px;
-    background-color: #C6C6C6;
-    color: #000;
-    /* Bordas 3D de botão não pressionado */
-    border-top: 4px solid #FFFFFF;
-    border-left: 4px solid #FFFFFF;
-    border-bottom: 4px solid #555555;
-    border-right: 4px solid #555555;
-    
-    font-family: 'VT323', monospace;
+#subtitle {
+    color: #FFF;
     font-size: 2rem;
-    cursor: pointer;
-    text-shadow: 2px 2px 0px #999;
+    text-shadow: 2px 2px 0px #000;
+    margin-bottom: 20px;
 }
 
-/* Quando o botão é clicado (afunda) */
-#restartBtn:active {
-    /* Inverte as bordas para parecer que o botão foi empurrado */
-    border-top
+/* Estilo da caixa de digitar a idade (Comic Book Input) */
+input[type="number"] {
+    font-family: 'Bangers', cursive;
+    font-size: 3rem;
+    padding: 10px;
+    margin-bottom: 25px;
+    width: 200px;
+    text-align: center;
+    border: 4px solid #000;
+    border-radius: 8px;
+    box-shadow: 6px 6px 0px #000;
+    transition: all 0.2s;
+}
+
+input[type="number"]:focus {
+    outline: none;
+    border-color: #ED1D24;
+    box-shadow: 0 0 15px rgba(237, 29, 36, 0.8), 6px 6px 0px #000;
+    transform: scale(1.05);
+}
+
+/* Botão turbinado */
+button {
+    padding: 15px 50px;
+    background: linear-gradient(to bottom, #FF3333, #CC0000);
+    color: #FFF;
+    border: 3px solid #000;
+    border-radius: 8px;
+    
+    font-family: 'Bangers', cursive;
+    font-size: 2.8rem;
+    cursor: pointer;
+    text-shadow: 2px 2px 0px #000;
+    letter-spacing: 2px;
+    
+    /* Sombra de quadrinhos */
+    box-shadow: 6px 6px 0px #000;
+    transition: all 0.1s ease;
+    display: block;
+    margin: 0 auto;
+}
+
+button:hover {
+    background: linear-gradient(to bottom, #FF4D4D, #ED1D24);
+    transform: translateY(-2px);
+    box-shadow: 8px 8px 0px #000;
+}
+
+button:active {
+    transform: translateY(4px) translateX(4px);
+    box-shadow: 2px 2px 0px #000;
+}
+
+/* Esconde a caixa de resultado no início */
+.hidden {
+    display: none !important;
+}
+
+/* Caixa onde aparece o texto de Votação */
+#resultado {
+    margin-top: 30px;
+    background-color: #FFF;
+    padding: 20px;
+    border: 4px solid #000;
+    border-radius: 10px;
+    box-shadow: 8px 8px 0px #000;
+    animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+    0% { transform: scale(0.5); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+#resStatus {
+    font-size: 3rem;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 0px #000;
+}

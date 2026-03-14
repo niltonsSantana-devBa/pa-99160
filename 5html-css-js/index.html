@@ -1,0 +1,34 @@
+<!-- Crie um site para resolver a seguinte questões:
+
+Escreva um programa que solicite ao usuário a quantidade de maçãs desejadas.
+As maçãs custarão R$1,30 cada, se forem compradas menos de uma dúzia, e custarão R$1,00
+cada, se forem comporadas pelo menos 12.
+Calcule e mostre valor total da compra. -->
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja de Maçãs - Kira</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="conteiner">
+        <img src="/5html-css-js/assets/logo_tipo-removebg-preview.png" alt="logo maçã" id="logoCaderno">
+        
+        <h1>🍎 Loja de Maçãs 🍎</h1>
+        <p>Menos de 1 dúzia: <strong>R$ 1,30 cada</strong><br>A partir de 1 dúzia: <strong>R$ 1,00 cada</strong></p>
+
+        <input type="number" id="quantidadeInput" placeholder="Quantidade...">
+        
+        <button onclick="resultado()">ESCREVER NO CADERNO</button>
+        
+        <div id="resultado" class="hidden">
+            <p id="resStatus"></p>
+        </div>
+    </div> 
+
+    <script src="script.js"></script>
+</body>
+</html>
