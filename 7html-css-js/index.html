@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academia Cyberpunk - Avaliação</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="container">
+        <img src="assets/logo_tipo-removebg-preview.png" alt="Logo tipo" id="logoCaderno">
+
+        <h1>SISTEMA DE AVALIAÇÃO</h1>
+        <p class="subtitle">Insira as notas do cadete (0 a 10)</p>
+
+        <form id="cyberForm">
+            <div class="input-group">
+                <label for="nota1">Módulo 1 (Nota 1)</label>
+                <input type="number" id="nota1" placeholder="0.0" step="0.1" required>
+            </div>
+            
+            <div class="input-group">
+                <label for="nota2">Módulo 2 (Nota 2)</label>
+                <input type="number" id="nota2" placeholder="0.0" step="0.1" required>
+            </div>
+            
+            <div class="input-group">
+                <label for="nota3">Módulo 3 (Nota 3)</label>
+                <input type="number" id="nota3" placeholder="0.0" step="0.1" required>
+            </div>
+
+            <button type="submit" id="btnCalcular">PROCESSAR DADOS</button>
+        </form>
+
+        <div id="error-message" class="hidden alert">
+            <p>ERRO DE SISTEMA: As notas devem estar entre 0 e 10. Tente novamente.</p>
+        </div>
+
+        <section id="resultado" class="hidden">
+            <div class="glitch-box">
+                <p>Média Final: <span id="resMedia"></span></p>
+                <p>Status: <span id="resStatus" class="status"></span></p>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

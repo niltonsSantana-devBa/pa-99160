@@ -1,0 +1,259 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap');
+
+:root {
+    --cyber-bg: #090a0f;
+    --cyber-black: #050505;
+    --cyber-cyan: #00f3ff;
+    --cyber-pink: #ff003c;
+    --cyber-yellow: #fced00;
+    --cyber-green: #00ff66;
+    
+    --text-main: #e0e0e0;
+    --font-display: 'Orbitron', sans-serif;
+    --font-code: 'Share Tech Mono', monospace;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-code);
+}
+
+body {
+    background-color: var(--cyber-bg);
+    background-image: 
+        linear-gradient(rgba(0, 243, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 243, 255, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    color: var(--text-main);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding-block-start: 60px;
+    padding-block-end: 20px;
+}
+
+.container {
+    background: rgba(5, 5, 5, 0.85);
+    border: 1px solid var(--cyber-cyan);
+    box-shadow: 0 0 20px rgba(0, 243, 255, 0.2), inset 0 0 15px rgba(0, 243, 255, 0.1);
+    border-radius: 4px;
+    backdrop-filter: blur(5px);
+    
+    width: 100%;
+    max-width: 480px;
+    padding: 45px 35px 35px 35px;
+    position: relative;
+    text-align: center;
+    
+    animation: cyberFloat 3s infinite alternate ease-in-out;
+}
+
+@keyframes cyberFloat {
+    0% { transform: translateY(0px); box-shadow: 0 0 20px rgba(0, 243, 255, 0.2), inset 0 0 15px rgba(0, 243, 255, 0.1); }
+    100% { transform: translateY(-5px); box-shadow: 0 5px 30px rgba(0, 243, 255, 0.3), inset 0 0 20px rgba(0, 243, 255, 0.15); }
+}
+
+/* O PADRÃO: LOGO FLUTUANTE */
+#logoCaderno {
+    width: 130px;
+    height: auto;
+    position: absolute;
+    inset-block-start: -65px;
+    inset-inline-start: 50%;
+    transform: translateX(-50%);
+    
+    background-color: var(--cyber-black);
+    border: 3px solid var(--cyber-cyan);
+    border-radius: 50%;
+    padding: 8px;
+    
+    box-shadow: 0px 0px 15px var(--cyber-cyan), 0px 0px 5px var(--cyber-pink);
+    animation: popInLogo 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 10;
+    transition: all 0.3s;
+}
+
+@keyframes popInLogo {
+    0% { transform: translateX(-50%) scale(0) rotate(-45deg); opacity: 0; }
+    100% { transform: translateX(-50%) scale(1) rotate(0deg); opacity: 1; }
+}
+
+#logoCaderno:hover {
+    transform: translateX(-50%) scale(1.1) rotate(10deg);
+    border-color: var(--cyber-pink);
+    box-shadow: 0px 0px 25px var(--cyber-pink), 0px 0px 10px var(--cyber-cyan);
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    width: 30px;
+    height: 30px;
+    border-top: 3px solid var(--cyber-pink);
+    border-right: 3px solid var(--cyber-pink);
+    box-shadow: 2px -2px 10px var(--cyber-pink);
+    z-index: 1;
+}
+
+.container::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: -2px;
+    width: 30px;
+    height: 30px;
+    border-bottom: 3px solid var(--cyber-pink);
+    border-left: 3px solid var(--cyber-pink);
+    box-shadow: -2px 2px 10px var(--cyber-pink);
+    z-index: 1;
+}
+
+h1 {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 2.2rem;
+    color: var(--cyber-yellow);
+    text-shadow: 0 0 5px rgba(252, 237, 0, 0.5), 2px 2px 0px var(--cyber-pink);
+    margin-block-end: 5px;
+    margin-block-start: 25px;
+    letter-spacing: 2px;
+}
+
+.subtitle {
+    color: var(--cyber-cyan);
+    font-size: 1.1rem;
+    margin-block-end: 25px;
+    letter-spacing: 1px;
+}
+
+.input-group {
+    margin-block-end: 20px;
+}
+
+label {
+    display: block;
+    margin-block-end: 5px;
+    font-family: var(--font-display);
+    color: #888;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid #333;
+    border-bottom: 3px solid var(--cyber-cyan);
+    color: var(--cyber-cyan);
+    font-size: 1.5rem;
+    text-align: center;
+    border-radius: 2px;
+    outline: none;
+    transition: all 0.3s;
+}
+
+input:focus {
+    background: rgba(0, 243, 255, 0.1);
+    box-shadow: 0 5px 15px rgba(0, 243, 255, 0.2);
+    border-bottom-color: var(--cyber-pink);
+    color: #fff;
+    transform: scale(1.02);
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    margin-block-start: 15px;
+    background-color: var(--cyber-pink);
+    color: #fff;
+    border: none;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    cursor: pointer;
+    box-shadow: 3px 3px 0 var(--cyber-yellow);
+    transition: all 0.2s;
+}
+
+button:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0 var(--cyber-yellow), 0 0 15px var(--cyber-pink);
+}
+
+button:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 var(--cyber-yellow);
+}
+
+.hidden {
+    display: none !important;
+}
+
+.alert {
+    margin-block-start: 20px;
+    padding: 15px;
+    background: rgba(255, 0, 60, 0.15);
+    border: 1px solid var(--cyber-pink);
+    border-left: 5px solid var(--cyber-pink);
+    color: #ffcccc;
+    font-size: 1.1rem;
+    animation: flash 0.3s ease-in-out;
+}
+
+@keyframes flash {
+    0% { transform: scale(0.95); opacity: 0; }
+    50% { transform: scale(1.02); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+#resultado {
+    margin-block-start: 25px;
+    background: #000;
+    padding: 20px;
+    border: 1px solid var(--cyber-cyan);
+    box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
+    
+    transform: scale(0.95) translateY(10px);
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+
+#resultado.show {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+}
+
+.glitch-box p {
+    font-size: 1.3rem;
+    margin-block-end: 10px;
+    border-bottom: 1px dashed #333;
+    padding-block-end: 8px;
+}
+
+#resMedia {
+    color: var(--cyber-cyan);
+    font-family: var(--font-display);
+    font-size: 2rem;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+}
+
+.status {
+    font-family: var(--font-display);
+    font-size: 2rem !important;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.aprovado { color: var(--cyber-green); text-shadow: 0 0 15px var(--cyber-green); }
+.recuperacao { color: var(--cyber-yellow); text-shadow: 0 0 15px var(--cyber-yellow); }
+.reprovado { color: var(--cyber-pink); text-shadow: 0 0 15px var(--cyber-pink); }
