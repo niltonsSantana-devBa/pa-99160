@@ -1,20 +1,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;0,700;0,900;1,900&display=swap');
 
+:root {
+    --bg-universe: #e65c00;
+    --goku-blue: #0b2e59;
+    --goku-orange: #ff5e00;
+    --goku-orange-light: #ff7b2b;
+    --super-saiyan-gold: #ffd700;
+    --scouter-green: #33cc33;
+    --scouter-green-neon: #66ff66;
+    --scouter-bg: rgba(0, 30, 0, 0.85);
+    --scouter-bg-focus: rgba(0, 45, 0, 0.95);
+    --text-white: #ffffff;
+    --kaioh-red: #ff3333;
+    
+    --shadow-black: #000000;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    /* Fonte "Kanit" - Tem um formato agressivo e inclinado, muito usado em animes */
     font-family: 'Kanit', sans-serif; 
 }
 
 body {
-    /* Papel de parede épico do Dragon Ball Z (Shenlong). Fundo laranja de backup. */
-    background-color: #e65c00; 
+    background-color: var(--bg-universe); 
     background-image: 
-        linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)),
-        url('/6html-css-js/assets/dragonball-super-7680x4320.jpg');
-    background-size: cover;
+        radial-gradient(circle at 50% 50%, rgba(255, 94, 0, 0.1) 0%, rgba(0, 0, 0, 0.8) 100%),
+        repeating-linear-gradient(45deg, rgba(0,0,0,0.4), rgba(0,0,0,0.4) 3px, rgba(0,0,0,0.6) 3px, rgba(0,0,0,0.6) 6px),
+        url('assets/dragonball-super-7680x4320.jpg'); 
+    background-size: cover, auto, cover;
     background-position: center;
     background-attachment: fixed;
     
@@ -22,174 +37,225 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    padding: 20px;
+    padding-block: 40px;
 }
 
 .container {
-    /* O TRUQUE DEFINITIVO DE CENTRALIZAÇÃO */
     display: flex;
     flex-direction: column;
-    align-items: center; /* Isso alinha TUDO no centro (Logo e Título) */
+    align-items: center; 
 
-    /* Cores do Kimono do Goku (Azul escuro com borda dupla Laranja e Amarela) */
-    background-color: #0b2e59; 
-    border: 6px solid #ff5e00; 
-    box-shadow: 0 0 0 4px #ffd700, 0 15px 40px rgba(0, 0, 0, 0.9);
-    border-radius: 10px;
+    background: linear-gradient(135deg, var(--goku-blue) 0%, #03152e 100%); 
+    border: 8px solid var(--goku-orange); 
+    box-shadow: 
+        0 0 0 5px var(--super-saiyan-gold), 
+        0 20px 50px rgba(0, 0, 0, 0.9),
+        inset 0 0 30px rgba(255, 215, 0, 0.1);
+    border-radius: 12px;
     
     width: 100%;
-    max-width: 450px;
-    padding: 35px;
+    max-width: 480px;
+    padding: 45px 35px 35px 35px;
     position: relative;
+    
+    /* Super Saiyan Aura Animation */
+    animation: auraFloat 3.5s infinite alternate ease-in-out;
 }
 
-/* Força o formulário a ocupar o espaço todo dentro do container flex */
+@keyframes auraFloat {
+    0% { transform: translateY(0px) scale(1); box-shadow: 0 0 0 5px var(--super-saiyan-gold), 0 20px 40px rgba(0, 0, 0, 0.9), inset 0 0 30px rgba(255, 215, 0, 0.05); }
+    100% { transform: translateY(-8px) scale(1.01); box-shadow: 0 0 15px 6px var(--super-saiyan-gold), 0 30px 60px rgba(0, 0, 0, 0.7), inset 0 0 40px rgba(255, 215, 0, 0.2); }
+}
+
 form {
     width: 100%;
 }
 
-/* =========================================
-   A LOGO: PEQUENA E TOTALMENTE CENTRALIZADA
-   ========================================= */
 #logoCaderno {
-    width: 65px !important; 
+    width: 80px !important; 
     height: auto !important;
-    margin-bottom: 15px !important;
-    /* Sem margens malucas, o flexbox do .container já faz o trabalho! */
-    filter: drop-shadow(0px 0px 10px rgba(255, 215, 0, 0.8));
+    position: absolute;
+    inset-block-start: -40px;
+    background-color: var(--super-saiyan-gold);
+    border-radius: 50%;
+    padding: 5px;
+    border: 4px solid var(--shadow-black);
+    filter: drop-shadow(0px 10px 15px rgba(255, 215, 0, 0.8));
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.4s ease;
+    z-index: 10;
 }
-/* ========================================= */
+
+#logoCaderno:hover {
+    transform: scale(1.25) rotate(15deg);
+    filter: drop-shadow(0px 0px 25px rgba(255, 215, 0, 1));
+}
 
 h2 {
-    color: #ffd700; /* Amarelo Dourado */
+    color: var(--super-saiyan-gold);
     font-weight: 900;
-    font-size: 2.2rem;
+    font-size: 2.6rem;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    text-shadow: 3px 3px 0px #ff5e00, 5px 5px 0px #000000;
-    margin-bottom: 25px;
+    letter-spacing: 3px;
+    text-shadow: 
+        3px 3px 0px var(--goku-orange), 
+        6px 6px 0px var(--shadow-black),
+        0 0 20px rgba(255, 215, 0, 0.4);
+    margin-block-end: 25px;
+    margin-block-start: 15px;
     text-align: center;
-    font-style: italic; /* Estilo de título de episódio de DBZ */
+    font-style: italic; 
+    line-height: 1.1;
+    transform: skew(-5deg) rotate(-2deg);
 }
 
 .form-group {
-    margin-bottom: 20px;
+    margin-block-end: 20px;
     width: 100%;
 }
 
 label {
     display: block;
-    margin-bottom: 5px;
-    font-size: 1rem;
-    color: #ff9900; 
+    margin-block-end: 8px;
+    font-size: 1.1rem;
+    color: var(--super-saiyan-gold); 
     text-transform: uppercase;
     font-weight: 700;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 0px var(--shadow-black);
 }
 
-/* Inputs simulando o visor verde do Scouter (Rastreador) */
+/* Inputs simulando Display Scouter com linha de escaneamento geométrica */
 input {
     width: 100%;
-    padding: 12px 15px;
-    background-color: rgba(0, 30, 0, 0.7); 
-    border: 2px solid #33cc33; 
-    color: #66ff66; /* Texto verde neon */
-    font-size: 1.1rem;
-    font-weight: 600;
+    padding: 15px 20px;
+    background-color: var(--scouter-bg); 
+    border: 3px solid var(--scouter-green); 
+    color: var(--scouter-green-neon); 
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: 2px;
     outline: none;
-    border-radius: 4px;
-    transition: all 0.2s ease;
+    border-radius: 6px;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: inset 0 0 10px rgba(51, 204, 51, 0.2), 4px 4px 0px var(--shadow-black);
 }
 
 input::placeholder {
-    color: #1f7a1f;
+    color: rgba(51, 204, 51, 0.4); 
     font-weight: 400;
 }
 
 input:focus {
-    background-color: rgba(0, 50, 0, 0.9);
-    box-shadow: 0 0 15px rgba(51, 204, 51, 0.5);
+    background-color: var(--scouter-bg-focus);
+    border-color: var(--scouter-green-neon);
+    box-shadow: 
+        inset 0 0 20px rgba(102, 255, 102, 0.4), 
+        0 0 20px rgba(51, 204, 51, 0.6),
+        4px 4px 0px var(--shadow-black);
+    transform: scale(1.03) translateX(5px);
 }
 
-/* BOTÃO DE AÇÃO */
 button {
     width: 100%;
-    padding: 15px;
-    background: linear-gradient(180deg, #ff9900 0%, #ff5e00 100%);
-    color: #ffffff;
-    border: 3px solid #ffd700;
-    border-radius: 6px;
-    font-size: 1.3rem;
+    padding: 18px;
+    background: linear-gradient(135deg, #ff9900 0%, var(--goku-orange) 100%);
+    color: var(--text-white);
+    border: 4px solid var(--super-saiyan-gold);
+    border-radius: 8px;
+    font-size: 1.5rem;
     text-transform: uppercase;
     font-weight: 900;
     font-style: italic;
-    letter-spacing: 2px;
+    letter-spacing: 4px;
     cursor: pointer;
-    margin-top: 10px;
-    text-shadow: 2px 2px 0px #000000;
-    box-shadow: 0 5px 15px rgba(255, 94, 0, 0.5);
-    transition: all 0.2s ease; 
+    margin-block-start: 15px;
+    text-shadow: 2px 2px 0px var(--shadow-black);
+    box-shadow: 6px 6px 0px var(--shadow-black), inset 0px 4px 0px rgba(255,255,255,0.3);
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
 }
 
 button:hover {
-    background: linear-gradient(180deg, #ffd700 0%, #ff9900 100%);
-    color: #0b2e59;
+    background: linear-gradient(135deg, var(--super-saiyan-gold) 0%, #ff9900 100%);
+    color: var(--goku-blue);
     text-shadow: none;
-    box-shadow: 0 0 20px #ffd700;
-    transform: scale(1.03);
+    box-shadow: 8px 8px 0px var(--shadow-black), inset 0px -4px 0px rgba(0,0,0,0.1);
+    transform: scale(1.05) translateY(-4px);
 }
 
 button:active {
-    transform: scale(0.98);
+    transform: scale(0.98) translate(4px, 4px);
+    box-shadow: 0px 0px 0px var(--shadow-black);
 }
 
 .hidden {
     display: none !important;
 }
 
-/* CAIXA DE RESULTADO */
 #resultado {
     width: 100%;
-    margin-top: 25px;
-    padding: 20px;
-    background-color: #05162b;
-    border: 2px solid #ff5e00;
-    border-radius: 6px;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: #ffffff;
+    margin-block-start: 35px;
+    padding: 25px;
+    background-color: #03152e;
+    border: 4px solid var(--super-saiyan-gold);
+    border-radius: 8px;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--text-white);
+    transform: scale(0.8) rotateX(20deg);
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 8px 8px 0px var(--shadow-black);
+    position: relative;
+}
+
+#resultado:not(.hidden) {
+    transform: scale(1) rotateX(0deg);
+    animation: blastIn 0.5s forwards;
+}
+
+@keyframes blastIn {
+    0% { transform: scale(0.5); opacity: 0; }
+    70% { transform: scale(1.05); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
 }
 
 #resultado p {
-    margin-bottom: 8px;
+    margin-block-end: 12px;
+    border-bottom: 2px dashed rgba(255, 255, 255, 0.1);
+    padding-block-end: 8px;
 }
 
 #resultado strong {
-    color: #ffd700;
+    color: var(--super-saiyan-gold);
+    letter-spacing: 1px;
 }
 
-/* APROVADO: Modo Super Saiyajin */
+/* APROVADO: Modo Super Saiyajin Aura Radial */
 .aprovado {
-    border-color: #ffd700 !important; 
-    background: radial-gradient(circle, rgba(255,215,0,0.2) 0%, rgba(11,46,89,1) 100%) !important;
+    border-color: var(--super-saiyan-gold) !important; 
+    background: radial-gradient(circle at top right, rgba(255,215,0,0.2) 0%, rgba(3,21,46,1) 80%) !important;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3), 8px 8px 0px var(--shadow-black) !important;
 }
 
-/* NEGADO: Ataque de Ki Vermelho */
+/* NEGADO: Kamehameha Vermelho / Kaio-ken */
 .negado {
-    border-color: #ff0000 !important; 
-    background: radial-gradient(circle, rgba(255,0,0,0.2) 0%, rgba(11,46,89,1) 100%) !important;
+    border-color: var(--kaioh-red) !important; 
+    background: radial-gradient(circle at top right, rgba(255,0,0,0.2) 0%, rgba(3,21,46,1) 80%) !important;
+    box-shadow: 0 0 20px rgba(255, 51, 51, 0.3), 8px 8px 0px var(--shadow-black) !important;
 }
 
 .status {
-    margin-top: 15px;
-    padding-top: 15px;
-    border-top: 2px dashed rgba(255, 255, 255, 0.2);
+    margin-block-start: 20px;
+    padding-block-start: 15px;
+    border-block-start: 3px solid rgba(255, 255, 255, 0.2) !important;
     font-weight: 900;
-    font-size: 1.4rem;
+    font-size: 1.8rem;
     text-transform: uppercase;
     text-align: center;
     font-style: italic;
+    letter-spacing: 2px;
+    border-bottom: none !important;
 }
 
-.aprovado .status { color: #ffd700; text-shadow: 0 0 10px rgba(255,215,0,0.8); }
-.negado .status { color: #ff3333; text-shadow: 0 0 10px rgba(255,0,0,0.8); }
+.aprovado .status { color: var(--super-saiyan-gold); text-shadow: 0 0 15px rgba(255,215,0,1); }
+.negado .status { color: var(--kaioh-red); text-shadow: 0 0 15px rgba(255,0,0,1); }

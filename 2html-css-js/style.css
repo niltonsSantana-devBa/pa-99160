@@ -1,184 +1,304 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Courier+Prime:wght@400;700&display=swap');
+
+:root {
+    --bg-dark: #12100e;
+    --bg-gradient-center: #2a2521;
+    --bg-gradient-edge: #0a0908;
+    
+    --text-primary: #2d1b15;
+    --text-secondary: #4a362f;
+    --text-emphasis: #731313;
+    
+    --paper-bg: #ece5d3;
+    --paper-texture-color: rgba(139, 115, 85, 0.08);
+    --border-dark: #2d1b15;
+    
+    --iron-color: #3b3b3b;
+    --iron-highlight: #6e6e6e;
+    
+    --blood-red: #8a1717;
+    --blood-red-dark: #4a0d0d;
+    --blood-red-glow: rgba(138, 23, 23, 0.4);
+    
+    --input-bg: rgba(255, 255, 255, 0.6);
+    --input-border: #a89487;
+    --input-focus-bg: #ffffff;
+    
+    --btn-bg: #223621;
+    --btn-bg-hover: #2e4a2d;
+    --btn-border: #0d170c;
+    --btn-text: #f0ead6;
+    --btn-glow: rgba(46, 74, 45, 0.5);
+    
+    --result-bg: rgba(255, 255, 255, 0.4);
+    --result-border: #4a362f;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Importando fontes: 'Cinzel' (épico) e 'Courier Prime' (relatório militar) */
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Courier+Prime:wght@400;700&display=swap');
-
 body {
-    /* Fundo escuro imitando a escuridão fora das muralhas */
-    background-color: #1a1815;
-    background-image: radial-gradient(circle at center, #2d2926 0%, #0d0c0a 100%);
+    background-color: var(--bg-dark);
+    background-image: 
+        radial-gradient(circle at 50% 50%, transparent 20%, rgba(0,0,0,0.8) 120%),
+        repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(0,0,0,0.05) 2px, rgba(0,0,0,0.05) 4px),
+        radial-gradient(circle at center, var(--bg-gradient-center) 0%, var(--bg-gradient-edge) 100%);
     font-family: 'Courier Prime', monospace;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    color: #3e2723;
+    min-height: 100vh;
+    color: var(--text-primary);
+    padding: 20px;
 }
 
 .container {
-    /* Fundo imitando pergaminho antigo com uma textura sutil */
-    background-color: #e6ddc5;
+    background-color: var(--paper-bg);
     background-image: 
-        linear-gradient(rgba(139, 115, 85, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(139, 115, 85, 0.05) 1px, transparent 1px);
-    background-size: 15px 15px; /* Cria um leve aspecto de papel pautado/mapa */
+        linear-gradient(var(--paper-texture-color) 1px, transparent 1px),
+        linear-gradient(90deg, var(--paper-texture-color) 1px, transparent 1px),
+        repeating-radial-gradient(circle at 0 0, transparent 0, rgba(139, 115, 85, 0.03) 1px, transparent 2px);
+    background-size: 20px 20px, 20px 20px, 4px 4px;
     
-    border: 3px solid #3e2723; /* Borda de couro escuro */
-    border-radius: 2px;
-    padding: 35px 30px; /* Um pouco mais de espaço interno */
-    width: 360px;
+    border: 2px solid var(--border-dark);
+    border-radius: 4px;
+    padding: 40px 35px;
+    width: 100%;
+    max-width: 400px;
     
-    /* Sombra pesada projetada e sombra interna de envelhecimento */
-    box-shadow: 12px 12px 20px rgba(0, 0, 0, 0.8), inset 0 0 50px rgba(100, 75, 50, 0.3);
+    box-shadow: 
+        0 20px 40px rgba(0,0,0,0.6),
+        0 10px 20px rgba(0,0,0,0.4),
+        0 0 0 6px rgba(255,255,255,0.05),
+        inset 0 0 60px rgba(100, 75, 50, 0.3),
+        inset 0 0 15px rgba(0, 0, 0, 0.1);
     position: relative;
+    border-image: linear-gradient(to bottom right, #2d1b15, #5c3a21, #2d1b15) 1;
 }
 
-/* =========================================
-   TACHAS DE METAL NOS 4 CANTOS
-   ========================================= */
 .container::before, .container::after {
-    content: ""; position: absolute; width: 12px; height: 12px;
-    background-color: #4a4a4a; /* Cor de ferro */
+    content: ""; 
+    position: absolute; 
+    width: 16px; 
+    height: 16px;
+    background: radial-gradient(circle at 30% 30%, var(--iron-highlight), var(--iron-color) 60%, #111);
     border-radius: 50%;
-    /* Efeito 3D para o prego */
-    box-shadow: inset -3px -3px 5px rgba(0,0,0,0.7), 2px 2px 3px rgba(0,0,0,0.5);
+    box-shadow: 
+        inset -2px -2px 4px rgba(0,0,0,0.8), 
+        3px 3px 5px rgba(0,0,0,0.6),
+        -1px -1px 2px rgba(255,255,255,0.3);
 }
-.container::before { top: 12px; left: 12px; } /* Canto superior esquerdo */
-.container::after { top: 12px; right: 12px; } /* Canto superior direito */
+.container::before { inset-block-start: 15px; inset-inline-start: 15px; }
+.container::after { inset-block-start: 15px; inset-inline-end: 15px; }
 
-/* Criando os pinos inferiores usando um truque visual com uma tag inventada ou via div se tivesse no HTML. 
-Como não podemos mudar o HTML, vamos focar nos superiores, mas deixá-los mais realistas! */
+@keyframes float {
+    0% { transform: translateY(0px) scale(1); filter: drop-shadow(0 5px 5px rgba(0,0,0,0.3)); }
+    50% { transform: translateY(-5px) scale(1.02); filter: drop-shadow(0 15px 10px rgba(0,0,0,0.2)); }
+    100% { transform: translateY(0px) scale(1); filter: drop-shadow(0 5px 5px rgba(0,0,0,0.3)); }
+}
+
+.logo {
+    display: block;
+    max-width: 110px;
+    margin: 0 auto 20px auto;
+    animation: float 6s ease-in-out infinite;
+}
 
 h1 {
     font-family: 'Cinzel', serif;
-    color: #6b0f0f; /* Vermelho sangue um pouco mais vivo */
-    font-size: 1.8rem;
+    color: var(--text-emphasis);
+    font-size: 2rem;
     text-align: center;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-top: 0;
-    border-bottom: 2px solid #3e2723;
-    padding-bottom: 12px;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.2); /* Leve sombra no título */
+    letter-spacing: 3px;
+    margin-block-start: 0;
+    margin-block-end: 25px;
+    padding-block-end: 15px;
+    border-bottom: 2px solid var(--border-dark);
+    text-shadow: 1px 1px 0px rgba(255,255,255,0.5), -1px -1px 2px rgba(0,0,0,0.2);
+    position: relative;
+}
+
+h1::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 4px;
+    background-color: var(--blood-red);
+    border-radius: 2px;
 }
 
 label {
     display: block;
-    margin-top: 20px;
+    margin-block-start: 20px;
     font-weight: bold;
-    color: #2b1c19;
-    font-size: 1rem;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
+    transition: color 0.3s ease;
 }
 
 input {
     width: 100%;
-    padding: 12px;
-    margin-top: 6px;
-    background-color: #efe8d5; /* Papel ligeiramente mais claro */
-    color: #111;
-    border: 1px solid #8d6e63;
-    border-left: 4px solid #4e342e; /* Detalhe lateral no input */
+    padding: 14px 15px;
+    margin-block-start: 8px;
+    background-color: var(--input-bg);
+    color: var(--text-primary);
+    border: 1px solid var(--input-border);
+    border-block-end: 3px solid var(--input-border);
+    border-radius: 4px;
     font-family: 'Courier Prime', monospace;
     font-size: 1.1rem;
     box-sizing: border-box;
-    transition: all 0.3s;
-    /* Sombra interna para parecer que o campo está afundado no papel */
-    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.1);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: inset 1px 2px 4px rgba(0,0,0,0.05);
 }
 
 input:focus {
     outline: none;
-    border-left-color: #6b0f0f; /* Fica vermelho sangue ao focar */
-    background-color: #fff;
-    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.05), 0 0 8px rgba(107, 15, 15, 0.3);
+    border-color: var(--blood-red);
+    border-block-end-color: var(--blood-red-dark);
+    background-color: var(--input-focus-bg);
+    box-shadow: 
+        inset 1px 2px 4px rgba(0,0,0,0.02),
+        0 4px 12px var(--blood-red-glow);
+    transform: translateY(-2px);
+}
+
+input::placeholder {
+    color: rgba(45, 27, 21, 0.4);
+    font-style: italic;
 }
 
 #gerarBotao {
     width: 100%;
-    margin-top: 30px;
-    padding: 15px;
-    background-color: #2e472d; /* Verde Survey Corps */
-    color: #e6ddc5; 
-    border: 2px solid #152414;
+    margin-block-start: 35px;
+    padding: 16px;
+    background: linear-gradient(135deg, var(--btn-bg) 0%, var(--btn-bg-hover) 100%);
+    color: var(--btn-text);
+    border: none;
+    border-block-end: 5px solid var(--btn-border);
+    border-radius: 4px;
     font-family: 'Cinzel', serif;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: bold;
     text-transform: uppercase;
-    letter-spacing: 3px;
+    letter-spacing: 4px;
     cursor: pointer;
-    transition: all 0.2s;
-    /* Sombra dura estilo bloco pesado */
-    box-shadow: 5px 5px 0px #152414;
+    transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 
+        0 6px 15px var(--btn-glow),
+        inset 0 2px 0 rgba(255,255,255,0.1);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
 }
 
 #gerarBotao:hover {
-    background-color: #3b5a39; /* Clareia levemente */
-    transform: translateY(-2px); /* Dá uma leve subida */
-    box-shadow: 7px 7px 0px #152414; /* Aumenta a sombra */
+    background: linear-gradient(135deg, var(--btn-bg-hover) 0%, #3a5c37 100%);
+    transform: translateY(-2px);
+    box-shadow: 
+        0 10px 20px var(--btn-glow),
+        inset 0 2px 0 rgba(255,255,255,0.2);
+    border-block-end-width: 5px;
 }
 
-/* Efeito de clique mais pesado e realista */
 #gerarBotao:active {
-    transform: translate(5px, 5px);
-    box-shadow: 0px 0px 0px #152414;
-    background-color: #6b0f0f; /* Cor de sangue ao confirmar */
-    border-color: #380404;
+    transform: translateY(3px);
+    border-block-end-width: 0px;
+    margin-block-end: 5px;
+    box-shadow: 
+        0 2px 5px rgba(0,0,0,0.5),
+        inset 0 4px 8px rgba(0,0,0,0.6);
+    background: linear-gradient(135deg, var(--blood-red-dark) 0%, var(--blood-red) 100%);
 }
 
-/* Classe para o JS funcionar */
 .hidden {
     display: none !important;
+    opacity: 0;
 }
 
-/* =========================================
-   ÁREA DE RESULTADOS (DOCUMENTO ANEXO)
-   ========================================= */
 #resultadoMedia {
-    margin-top: 25px;
-    background-color: #f2ebd9; /* Papel mais novo para contraste */
-    border: 4px double #5d4037; /* Borda dupla estilo documento oficial */
-    padding: 20px;
+    margin-block-start: 30px;
+    background-color: var(--result-bg);
+    border: 2px solid var(--result-border);
+    border-radius: 4px;
+    padding: 30px 25px 20px 25px;
     position: relative;
-    box-shadow: inset 0 0 15px rgba(139, 115, 85, 0.2);
+    box-shadow: 
+        inset 0 0 20px rgba(139, 115, 85, 0.3),
+        0 5px 15px rgba(0,0,0,0.05);
+    animation: stampIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
-/* Efeito de "carimbo" ou fita no topo do resultado */
+@keyframes stampIn {
+    0% { transform: scale(0.9); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
 #resultadoMedia::before {
-    content: "DADOS DA AVALIAÇÃO";
+    content: "DADO CLASSIFICADO";
     position: absolute;
-    top: -12px;
-    left: 20px;
-    background-color: #5d4037;
-    color: #e6ddc5;
-    font-size: 0.8rem;
-    padding: 2px 8px;
+    inset-block-start: -14px;
+    inset-inline-start: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(to bottom, #5d4037, #3e2723);
+    color: var(--paper-bg);
+    font-size: 0.85rem;
+    padding: 4px 15px;
     font-weight: bold;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
+    border-radius: 2px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.1);
+    white-space: nowrap;
 }
 
 #resultadoMedia p {
-    margin: 12px 0;
-    font-size: 1.1rem;
+    margin-block: 15px;
+    font-size: 1.15rem;
     font-weight: bold;
-    border-bottom: 1px solid rgba(188, 170, 164, 0.5); /* Linha mais sutil */
-    padding-bottom: 5px;
+    border-bottom: 1px dashed rgba(74, 54, 47, 0.4);
+    padding-block-end: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-/* Formatando os IDs que o seu JS vai preencher */
-#resNome::before { content: "Recruta: "; color: #5d4037; font-weight: normal;}
-#resStatus::before { content: "Status.: "; color: #5d4037; font-weight: normal;}
-#resMedia::before { content: "Média..: "; color: #5d4037; font-weight: normal;}
+#resNome::before { 
+    content: "Recruta:"; 
+    color: var(--text-secondary); 
+    font-weight: normal; 
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+#resStatus::before { 
+    content: "Status:"; 
+    color: var(--text-secondary); 
+    font-weight: normal;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+#resMedia::before { 
+    content: "Média Final:"; 
+    color: var(--text-secondary); 
+    font-weight: normal;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
 
-/* O seu JS já injeta a cor verde/vermelha no Status */
 #resStatus {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     text-transform: uppercase;
     font-family: 'Cinzel', serif;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
 }

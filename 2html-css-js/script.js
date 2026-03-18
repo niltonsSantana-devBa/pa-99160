@@ -1,28 +1,32 @@
-function media(){ 
-    // Captura os valores dos inputs
-    const nomeInput = document.getElementById("nomeImput").value;
-    const nota1Input = document.getElementById("Nota1").value;
-    const nota2Input = document.getElementById("Nota2").value;
-    const media = (Number(nota1Input) + Number(nota2Input)) / 2;
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("mediaForm");
 
-    //Validaçao
-    if(!nomeInput || !nota1Input || !nota2Input){
-        alert("Preencha todos os campos")
-        return;
-    }
+    form.addEventListener("submit", (event) => {
+        event.preventDefault(); // Evita recarregar a página
 
-    //Exibe os resultados no HTML
-    document.getElementById("resNome").textContent = nomeInput;
-    document.getElementById("resMedia").textContent = media.toFixed(2);
-    document.getElementById("resultadoMedia").classList.remove("hidden");
+        // Captura os valores dos inputs
+        const nomeValor = document.getElementById("nomeInput").value;
+        const nota1Valor = document.getElementById("nota1Input").value;
+        const nota2Valor = document.getElementById("nota2Input").value;
+        const valorMedia = (Number(nota1Valor) + Number(nota2Valor)) / 2;
 
-   //Situaçao do aluno
-        if(media >= 7){
-    document.getElementById("resStatus").textContent = "Aprovado";
-    document.getElementById("resStatus").style.color = "green";
-    }
-    else{
-    document.getElementById("resStatus").textContent = "Reprovado";
-    document.getElementById("resStatus").style.color = "red";
-    }
-}
+        const resStatus = document.getElementById("resStatus");
+        const resultadoMedia = document.getElementById("resultadoMedia");
+
+        // Exibe os resultados no HTML
+        document.getElementById("resNome").textContent = nomeValor;
+        document.getElementById("resMedia").textContent = valorMedia.toFixed(2);
+        
+        // Remove a classe que esconde
+        resultadoMedia.classList.remove("hidden");
+
+        // Situação do aluno
+        if (valorMedia >= 7) {
+            resStatus.textContent = "Aprovado";
+            resStatus.style.color = "green";
+        } else {
+            resStatus.textContent = "Reprovado";
+            resStatus.style.color = "red";
+        }
+    });
+});

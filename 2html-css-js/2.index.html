@@ -17,32 +17,32 @@ está aprovado ou reprovado -->
 </head>
 
 <body>
-    <div class="container">
-        <div class="container2">
+    <main class="container">
+        <img src="assets/logo_tipo-removebg-preview.png" alt="Logo" class="logo">
+        <form class="container2" id="mediaForm">
             <h1>Gerador de notas</h1>
             <!-- nome: -->
-            <label for="nome">Informe seu nome </label>
-            <input type="text" id="nomeImput" placeholder="Ex.:Lucas">
+            <label for="nomeInput">Informe seu nome </label>
+            <input type="text" id="nomeInput" placeholder="Ex.:Lucas" required>
 
             <!-- nota1: -->
-            <label for="numeroInput">Digite sua 1° nota </label>
-            <input type="number" id="Nota1" placeholder="Ex.:5">
+            <label for="nota1Input">Digite sua 1° nota </label>
+            <input type="number" id="nota1Input" placeholder="Ex.:5" required min="0" max="10" step="0.1">
 
             <!-- nota2: -->
-            <label for="numeroInput">Digite sua 2° nota </label>
-            <input type="number" id="Nota2" placeholder="Ex.:5">
+            <label for="nota2Input">Digite sua 2° nota </label>
+            <input type="number" id="nota2Input" placeholder="Ex.:5" required min="0" max="10" step="0.1">
 
-            <button id="gerarBotao" onclick="media()"> GerarMedia </button>
+            <button type="submit" id="gerarBotao"> Gerar Média </button>
 
-
-        </div>
+        </form>
         <!-- <div class="imagens"> <img src="assets/pngwing.com.png" alt="divisao"></div> -->
-        <div id="resultadoMedia" class="hidden">
+        <div id="resultadoMedia" class="hidden" aria-live="polite">
             <p id="resNome"></p>
             <p id="resStatus"></p>
             <p id="resMedia"></p>
         </div>
-    </div>
+    </main>
     <script src="script.js"></script>
 </body>
 

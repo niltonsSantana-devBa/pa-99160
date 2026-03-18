@@ -11,35 +11,36 @@ Usando uma linha para cada resultando -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de Resultados</title>
+    <title>Calculadora de Resultados Escolar</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-     <header class="main-header">
-        <a href="#"> <img src="assets/png.png" alt="Logo JoJo" class="logo-image">
-        </a>
+    <header class="main-header">
+        <img src="assets/logo_tipo-removebg-preview.png" alt="Logo" class="logo-image">
     </header> 
-    <div class="conteiner">
-        <h1>Gerador de nota, soma, produto, maior e menor.</h1>
 
-        <label for="nota1">Digite o primeiro numero</label>
-        <input type="number" id="nota1" placeholder="Ex.: 5">
-        
-        <label for="nota2">Digite o segundo numero</label>
-        <input type="number" id="nota2" placeholder="Ex.: 5">
+    <main class="conteiner">
+        <h1>Gerador de nota, soma, produto, maior e menor</h1>
 
-        <button id="gerarBotao" onclick="resultado()"> Gerar resultado </button>
+        <form id="calcForm">
+            <label for="nota1Input">Digite o primeiro número</label>
+            <input type="number" id="nota1Input" placeholder="Ex.: 5" required step="any">
+            
+            <label for="nota2Input">Digite o segundo número</label>
+            <input type="number" id="nota2Input" placeholder="Ex.: 5" required step="any">
 
-        <div id="resultadoMedia" class="hidden">
-            <p>Produto: <span id="resProduto"></span></p>
+            <button type="submit" id="gerarBotao">Gerar Resultado</button>
+        </form>
+
+        <section id="resultadoMedia" class="hidden" aria-live="polite">
             <p>Soma: <span id="resSoma"></span></p>
             <p>Média: <span id="resMedia"></span></p>
+            <p>Produto: <span id="resProduto"></span></p>
             <p>Maior: <span id="resMaior"></span></p>
             <p>Menor: <span id="resMenor"></span></p>
-        </div>
-    </div>
-    <!-- <img src="assets/png.png" alt="jojo" width="300"> -->
+        </section>
+    </main>
+
     <script src="script.js"></script>
 </body>
 </html>

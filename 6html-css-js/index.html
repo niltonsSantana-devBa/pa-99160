@@ -24,29 +24,31 @@ aposentadoria”. -->
 </head>
 <body>
 
-    <div class="container">
-        <img src="/6html-css-js/assets/logo_tipo-removebg-preview.png" alt="Logo tipo">
+    <main class="container">
+        <img src="assets/logo_tipo-removebg-preview.png" alt="Logo tipo" id="logoCaderno">
         <h2>🏢 Sistema de Aposentadoria</h2>
         
-        <div class="form-group">
-            <label for="codigo">Matrícula do Empregado:</label>
-            <input type="text" id="codigo" placeholder="Ex: 12345">
-        </div>
+        <form id="dbzForm">
+            <div class="form-group">
+                <label for="codigo">Matrícula do Empregado:</label>
+                <input type="text" id="codigo" placeholder="Ex: 12345" required>
+            </div>
 
-        <div class="form-group">
-            <label for="anoNascimento">Ano de Nascimento:</label>
-            <input type="number" id="anoNascimento" placeholder="Ex: 1955">
-        </div>
+            <div class="form-group">
+                <label for="anoNascimento">Ano de Nascimento:</label>
+                <input type="number" id="anoNascimento" placeholder="Ex: 1955" required min="1900" max="2100">
+            </div>
 
-        <div class="form-group">
-            <label for="tempoTrabalho">Tempo de Trabalho (Anos):</label>
-            <input type="number" id="tempoTrabalho" placeholder="Ex: 32">
-        </div>
+            <div class="form-group">
+                <label for="tempoTrabalho">Tempo de Trabalho (Anos):</label>
+                <input type="number" id="tempoTrabalho" placeholder="Ex: 32" required min="0" max="100">
+            </div>
 
-        <button onclick="verificarAposentadoria()">Verificar Situação</button>
+            <button type="submit" id="btnAposentadoria">Verificar Situação</button>
+        </form>
 
-        <div id="resultado" class="hidden"></div>
-    </div>
+        <section id="resultado" class="hidden" aria-live="polite"></section>
+    </main>
 
     <script src="script.js"></script>
 </body>

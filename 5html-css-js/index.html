@@ -14,20 +14,22 @@ Calcule e mostre valor total da compra. -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="conteiner">
-        <img src="/5html-css-js/assets/logo_tipo-removebg-preview.png" alt="logo maçã" id="logoCaderno">
+    <main class="conteiner">
+        <img src="assets/logo_tipo-removebg-preview.png" alt="logo maçã" id="logoCaderno">
         
         <h1>🍎 Loja de Maçãs 🍎</h1>
-        <p>Menos de 1 dúzia: <strong>R$ 1,30 cada</strong><br>A partir de 1 dúzia: <strong>R$ 1,00 cada</strong></p>
+        <p>Menos de 1 dúzia: <strong class="blood-text">R$ 1,30 cada</strong><br>A partir de 1 dúzia: <strong class="blood-text">R$ 1,00 cada</strong></p>
 
-        <input type="number" id="quantidadeInput" placeholder="Quantidade...">
+        <form id="kiraForm">
+            <label for="quantidadeInput" class="hidden-label">Quantidade de maçãs:</label>
+            <input type="number" id="quantidadeInput" placeholder="Quantidade..." required min="1">
+            <button type="submit" id="btnEscrever">ESCREVER NO CADERNO</button>
+        </form>
         
-        <button onclick="resultado()">ESCREVER NO CADERNO</button>
-        
-        <div id="resultado" class="hidden">
+        <section id="resultado" class="hidden" aria-live="polite">
             <p id="resStatus"></p>
-        </div>
-    </div> 
+        </section>
+    </main> 
 
     <script src="script.js"></script>
 </body>

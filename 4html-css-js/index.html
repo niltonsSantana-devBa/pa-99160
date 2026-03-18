@@ -8,19 +8,22 @@
 </head>
 <body>
 
-    <div class="container">
-        <img src="/4html-css-js/assets/logo_tipo-removebg-preview.png" alt="Logo tipo" id="imagemHeroi">
+    <main class="container">
+        <img src="assets/logo_tipo-removebg-preview.png" alt="Logo tipo" id="imagemHeroi">
 
         <h1>POSSO VOTAR?</h1>
-        <p id="subtitle">Usa o teu sentido aranha eleitoral!</p>
+        <p id="subtitle">Teu sentido aranha eleitoral!</p>
         
-        <input type="number" id="idadeInput" placeholder="Idade">
-        <button onclick="resultado()">VERIFICAR</button>
+        <form id="votoForm">
+            <label for="idadeInput" class="hidden-label">Idade:</label>
+            <input type="number" id="idadeInput" placeholder="Sua Idade" required min="0" max="130">
+            <button type="submit" id="btnVerificar">VERIFICAR</button>
+        </form>
         
-        <div id="resultado" class="hidden">
+        <div id="resultado" class="hidden" aria-live="polite">
             <p id="resStatus"></p>
         </div>
-    </div>
+    </main>
 
     <script src="script.js"></script>
 </body>

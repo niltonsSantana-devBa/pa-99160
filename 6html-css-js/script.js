@@ -1,48 +1,58 @@
-function verificarAposentadoria() {
-    // 1. Captura os valores digitados no HTML
-    let codigo = document.getElementById("codigo").value;
-    let anoNascimento = parseInt(document.getElementById("anoNascimento").value);
-    let tempoTrabalho = parseInt(document.getElementById("tempoTrabalho").value);
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("dbzForm");
 
-    // 2. Validação simples para evitar campos vazios
-    if (!codigo || isNaN(anoNascimento) || isNaN(tempoTrabalho)) {
-        alert("Por favor, preencha todos os campos corretamente.");
-        return;
-    }
+    form.addEventListener("submit", (event) => {
+        event.preventDefault(); // Evita recarregar a tela
 
-    // 3. Calcula a idade baseada no ano atual
-    let anoAtual = new Date().getFullYear(); // Pega o ano atual do computador (ex: 2024)
-    let idade = anoAtual - anoNascimento;
+        // 1. Captura os valores digitados no HTML
+        let codigo = document.getElementById("codigo").value;
+        let anoNascimento = parseInt(document.getElementById("anoNascimento").value);
+        let tempoTrabalho = parseInt(document.getElementById("tempoTrabalho").value);
 
-    // 4. Lógica de decisão (O coração do seu algoritmo)
-    // Se a idade for maior ou igual a 65 OU (||) o tempo de trabalho for maior ou igual a 30
-    let podeAposentar = false;
-    
-    if (idade >= 65 || tempoTrabalho >= 30) {
-        podeAposentar = true;
-    }
+        // 2. Validação simples para evitar NaN (além do HTML5 reqs)
+        if (isNaN(anoNascimento) || isNaN(tempoTrabalho)) {
+            alert("Por favor, preencha os dados corretamente com números.");
+            return;
+        }
 
-    // 5. Prepara a exibição do resultado
-    let divResultado = document.getElementById("resultado");
-    
-    // Limpa as classes de cores antigas antes de aplicar a nova
-    divResultado.classList.remove("hidden", "aprovado", "negado");
+        // 3. Calcula a idade baseada no ano atual
+        let anoAtual = new Date().getFullYear();
+        let idade = anoAtual - anoNascimento;
 
-    let mensagemStatus = "";
+        // 4. Lógica de decisão (O coração do seu algoritmo)
+        let podeAposentar = false;
+        
+        if (idade >= 65 || tempoTrabalho >= 30) {
+            podeAposentar = true;
+        }
 
-    if (podeAposentar) {
-        mensagemStatus = "<span style='color: #27ae60;'>Requerer aposentadoria</span>";
-        divResultado.classList.add("aprovado"); // Fica verde
-    } else {
-        mensagemStatus = "<span style='color: #c0392b;'>Não requerer aposentadoria</span>";
-        divResultado.classList.add("negado"); // Fica vermelho
-    }
+        // 5. Prepara a exibição do resultado
+        let divResultado = document.getElementById("resultado");
+        
+        // Limpa as classes antigas
+        divResultado.classList.remove("hidden", "aprovado", "negado");
 
-    // 6. Imprime as informações na tela
-    divResultado.innerHTML = `
-        <p><strong>Matrícula:</strong> ${codigo}</p>
-        <p><strong>Idade:</strong> ${idade} anos</p>
-        <p><strong>Tempo de Trabalho:</strong> ${tempoTrabalho} anos</p>
-        <p class="status">Situação: ${mensagemStatus}</p>
-    `;
-}
+        let mensagemStatus = "";
+
+        if (podeAposentar) {
+            mensagemStatus = "<span style='color: var(--scouter-green);'>Requerer aposentadoria</span>";
+            divResultado.classList.add("aprovado"); 
+        } else {
+            mensagemStatus = "<span style='color: var(--kaioh-red);'>Não requerer aposentadoria</span>";
+            divResultado.classList.add("negado"); 
+        }
+
+        // 6. Imprime as informações na tela
+        divResultado.innerHTML = `
+            <p><strong>Matrícula:</strong> ${codigo}</p>
+            <p><strong>Idade:</strong> ${idade} anos</p>
+            <p><strong>Tempo de Trabalho:</strong> ${tempoTrabalho} anos</p>
+            <p class="status">Situação: ${mensagemStatus}</p>
+        `;
+        
+        // Repintar para animacao caso ja estivesse aberto
+        divResultado.style.opacity = '0';
+        void divResultado.offsetWidth;
+        divResultado.style.opacity = '1';
+    });
+});
