@@ -31,7 +31,7 @@ Usando uma linha para cada resultando -->
 
             <button type="submit" id="gerarBotao">Gerar Resultado</button>
         </form>
-
+        
         <section id="resultadoMedia" class="hidden" aria-live="polite">
             <p>Soma: <span id="resSoma"></span></p>
             <p>Média: <span id="resMedia"></span></p>
@@ -39,6 +39,9 @@ Usando uma linha para cada resultando -->
             <p>Maior: <span id="resMaior"></span></p>
             <p>Menor: <span id="resMenor"></span></p>
         </section>
+        <div class="voltar-btn">
+            <button onclick="history.back()" class="voltar-btn">Voltar</button>
+        </div>
     </main>
 
     <script src="script.js"></script>

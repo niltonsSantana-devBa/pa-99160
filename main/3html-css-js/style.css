@@ -222,3 +222,47 @@ input::placeholder {
     font-family: 'Bangers', cursive;
     letter-spacing: 1px;
 }
+.voltar-btn {
+    display: block;
+    text-align: center;
+    margin-top: 30px;
+    width: 100%;
+}
+
+.voltar-btn button {
+    padding: 14px 28px;
+    background: linear-gradient(135deg, var(--jojo-purple) 0%, var(--jojo-pink) 100%);
+    color: var(--text-main);
+    border: 3px solid var(--jojo-gold);
+    border-radius: 8px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 
+        0 0 20px var(--jojo-gold),
+        0 8px 16px rgba(0, 0, 0, 0.8),
+        inset 0 2px 0 rgba(255, 255, 255, 0.2);
+    text-shadow: 2px 2px 4px var(--shadow-main);
+}
+
+.voltar-btn button:hover {
+    background: linear-gradient(135deg, var(--jojo-pink) 0%, var(--jojo-purple) 100%);
+    transform: translateY(-3px);
+    box-shadow: 
+        0 0 30px var(--jojo-gold),
+        0 12px 24px rgba(0, 0, 0, 0.8),
+        inset 0 2px 0 rgba(255, 255, 255, 0.3);
+    border-color: var(--jojo-green);
+}
+
+.voltar-btn button:active {
+    transform: translateY(2px);
+    box-shadow: 
+        0 0 10px var(--jojo-gold),
+        0 4px 8px rgba(0, 0, 0, 0.8),
+        inset 0 4px 8px rgba(0, 0, 0, 0.6);
+}
