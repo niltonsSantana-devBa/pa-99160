@@ -1,0 +1,247 @@
+/* ==========================================================================
+   Tema ÁCIDO — InfoCurso
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Boogaloo&family=Black+Ops+One&display=swap');
+
+:root {
+  --acid-magenta: #ff00ff;
+  --acid-cyan:    #00ffff;
+  --acid-yellow:  #ffff00;
+  --acid-green:   #00ff88;
+  --acid-orange:  #ff8800;
+  --acid-purple:  #8800ff;
+  --acid-bg:      #0d0d0d;
+}
+
+/* ── Fundo psicodélico ── */
+body {
+  background: #0a0a0a;
+  font-family: 'Boogaloo', cursive;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 15% 50%, #ff00ff1a 0%, transparent 60%),
+    radial-gradient(ellipse at 85% 20%, #00ffff1a 0%, transparent 60%),
+    radial-gradient(ellipse at 55% 85%, #ffff001a 0%, transparent 60%);
+  animation: bgPulse 5s ease-in-out infinite alternate;
+  z-index: 0;
+  pointer-events: none;
+}
+
+@keyframes bgPulse {
+  0%   { filter: hue-rotate(0deg);   opacity: 0.6; }
+  100% { filter: hue-rotate(180deg); opacity: 1; }
+}
+
+/* ── Card ── */
+.info-curso {
+  font-family: 'Boogaloo', cursive;
+  position: relative;
+  z-index: 1;
+  background: var(--acid-bg);
+  max-width: 380px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 4px;
+  cursor: default;
+  outline: 3px solid var(--acid-magenta);
+  outline-offset: 2px;
+  animation: borderRave 2s linear infinite, cardFloat 3s ease-in-out infinite;
+}
+
+@keyframes borderRave {
+  0%   { outline-color: var(--acid-magenta); box-shadow: 0 0 28px #ff00ff88, inset 0 0 18px #ff00ff0d; }
+  16%  { outline-color: var(--acid-orange);  box-shadow: 0 0 28px #ff880088, inset 0 0 18px #ff88000d; }
+  33%  { outline-color: var(--acid-yellow);  box-shadow: 0 0 28px #ffff0088, inset 0 0 18px #ffff000d; }
+  50%  { outline-color: var(--acid-green);   box-shadow: 0 0 28px #00ff8888, inset 0 0 18px #00ff880d; }
+  66%  { outline-color: var(--acid-cyan);    box-shadow: 0 0 28px #00ffff88, inset 0 0 18px #00ffff0d; }
+  83%  { outline-color: var(--acid-purple);  box-shadow: 0 0 28px #8800ff88, inset 0 0 18px #8800ff0d; }
+  100% { outline-color: var(--acid-magenta); box-shadow: 0 0 28px #ff00ff88, inset 0 0 18px #ff00ff0d; }
+}
+
+@keyframes cardFloat {
+  0%, 100% { transform: translateY(0px)  rotate(-0.4deg); }
+  50%       { transform: translateY(-8px) rotate(0.4deg); }
+}
+
+.info-curso:hover {
+  animation: borderRave 0.35s linear infinite, cardShake 0.08s linear infinite;
+}
+
+@keyframes cardShake {
+  0%   { transform: translate(-1px,-1px) rotate(-0.5deg); }
+  25%  { transform: translate(2px, 0px)  rotate(0.5deg); }
+  50%  { transform: translate(-1px, 2px) rotate(-0.3deg); }
+  75%  { transform: translate(1px, -1px) rotate(0.3deg); }
+  100% { transform: translate(-1px,-1px) rotate(-0.5deg); }
+}
+
+/* ── Badge ── */
+.badge {
+  display: inline-block;
+  font-family: 'Black Ops One', cursive;
+  font-size: 0.6rem;
+  letter-spacing: 2px;
+  padding: 2px 8px;
+  border-radius: 2px;
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  text-transform: uppercase;
+  background: var(--acid-magenta);
+  color: #000;
+}
+
+/* ── Título com Glitch ── */
+.info-curso h2 {
+  font-family: 'Black Ops One', cursive;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-top: 0;
+  margin-bottom: 1.4rem;
+  color: #fff;
+  text-align: center;
+  position: relative;
+  animation: titleGlitch 3s infinite;
+}
+
+.info-curso h2::before,
+.info-curso h2::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0; left: 0; right: 0;
+}
+
+.info-curso h2::before {
+  color: var(--acid-magenta);
+  clip-path: polygon(0 0, 100% 0, 100% 40%, 0 40%);
+  animation: glitch1 2.5s infinite;
+}
+
+.info-curso h2::after {
+  color: var(--acid-cyan);
+  clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%);
+  animation: glitch2 2.5s infinite;
+}
+
+@keyframes glitch1 {
+  0%,90%,100% { transform: translate(0); opacity: 0; }
+  92% { transform: translate(-3px, 1px);  opacity: 0.8; }
+  94% { transform: translate(3px, -1px);  opacity: 0.8; }
+  96% { transform: translate(-2px, 2px);  opacity: 0.8; }
+  98% { transform: translate(0);          opacity: 0; }
+}
+
+@keyframes glitch2 {
+  0%,88%,100% { transform: translate(0); opacity: 0; }
+  90% { transform: translate(3px, -2px);  opacity: 0.8; }
+  92% { transform: translate(-3px, 2px);  opacity: 0.8; }
+  94% { transform: translate(2px, -1px);  opacity: 0.8; }
+  96% { transform: translate(0);          opacity: 0; }
+}
+
+@keyframes titleGlitch {
+  0%,89%,100% { text-shadow: 2px 0 var(--acid-magenta), -2px 0 var(--acid-cyan); }
+  90% { text-shadow: 4px 0 var(--acid-magenta), -4px 0 var(--acid-cyan); filter: blur(1px); }
+  92% { text-shadow: -4px 0 var(--acid-magenta), 4px 0 var(--acid-cyan); }
+  94% { text-shadow: 2px 0 var(--acid-yellow), -2px 0 var(--acid-magenta); }
+  96% { text-shadow: 2px 0 var(--acid-magenta), -2px 0 var(--acid-cyan); }
+}
+
+/* Linha arco-íris */
+.sep {
+  display: block;
+  height: 3px;
+  margin-top: 10px;
+  background: linear-gradient(90deg, #ff00ff, #ffff00, #00ffff, #ff00ff);
+  background-size: 200%;
+  animation: rainbowMove 1.5s linear infinite;
+  border-radius: 2px;
+}
+
+@keyframes rainbowMove {
+  0%   { background-position: 0%; }
+  100% { background-position: 200%; }
+}
+
+/* ── Parágrafos ── */
+.info-curso p {
+  font-size: 1.1rem;
+  margin: 9px 0;
+  padding: 11px 15px;
+  border-radius: 3px;
+  background: #111;
+  position: relative;
+  overflow: hidden;
+  color: #eee;
+  border: 1px solid #333;
+  transition: transform 0.15s, filter 0.15s, background 0.15s;
+  animation: pGlow 4s ease-in-out infinite;
+}
+
+.info-curso p:nth-child(2) { animation-delay: 0s; }
+.info-curso p:nth-child(3) { animation-delay: 0.5s; }
+.info-curso p:nth-child(4) { animation-delay: 1s; }
+
+@keyframes pGlow {
+  0%,100% { border-color: #ff00ff44; }
+  33%      { border-color: #00ffff44; }
+  66%      { border-color: #ffff0044; }
+}
+
+/* Barra lateral — começa em magenta */
+.info-curso p::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, #ff00ff, #00ffff, #ffff00, #ff00ff);
+  background-size: 100% 300%;
+  animation: barScroll 1.5s linear infinite;
+}
+
+@keyframes barScroll {
+  0%   { background-position: 0% 0%; }
+  100% { background-position: 0% 300%; }
+}
+
+/* Scanlines retrô */
+.info-curso p::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    #ffffff05 3px,
+    #ffffff05 4px
+  );
+  pointer-events: none;
+}
+
+.info-curso p:hover {
+  transform: translateX(6px) skewX(-1deg);
+  background: #1a1a1a;
+  filter: brightness(1.2);
+}
+
+/* Rótulos arco-íris */
+.info-curso p strong {
+  font-family: 'Black Ops One', cursive;
+  letter-spacing: 1px;
+  font-size: 0.8em;
+  background: linear-gradient(90deg, #ff00ff, #00ffff, #ffff00);
+  background-size: 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: rainbowMove 2s linear infinite;
+  margin-right: 5px;
+}
