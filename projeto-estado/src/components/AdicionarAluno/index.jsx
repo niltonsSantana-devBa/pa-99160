@@ -5,17 +5,17 @@ import './style.css'
 export default function AdicionarAluno() {
     const[nome, setNome] = useState("")
     const[email, setEmail] = useState("")
-    const[alunos, setAluno] = useState([])
+    const[alunos, setAlunos] = useState([])
 
-    // Função para adcionar um aluno na lista.
+    // Função para adicionar um aluno na lista.
     const handleAdcionarAluno = (event) =>{
-        event.preventDefaute() // Impede que a página seja recarregada.
+        event.preventDefault() // Impede que a página seja recarregada.
 
         // Se os campos estiverem preenchidos...
         if (nome && email) {
-            setAluno ([... alunos, {nome, email}]) // Adicionar na lista
-            setNome ("")// Apaga o nome informado deixando o campo vazio.
-            setEmail("")// Apaga p e-mail informado deixando o campo vazio
+            setAlunos([...alunos, {nome, email}]) // Adicionar na lista
+            setNome("") // Apaga o nome informado deixando o campo vazio.
+            setEmail("") // Apaga o e-mail informado deixando o campo vazio.
         }
     }
     return(
