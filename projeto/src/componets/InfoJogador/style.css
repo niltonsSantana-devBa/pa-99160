@@ -1,0 +1,158 @@
+/* Paleta Oficial do Leão */
+:root {
+  --vitoria-vermelho: #c90000;
+  --vitoria-preto: #111111;
+  --vitoria-branco: #ffffff;
+  --vitoria-dourado: #cba85b;
+}
+
+/* Container Principal com o mesmo padrão da Carteirinha */
+.vitoria-container {
+  background: linear-gradient(135deg, var(--vitoria-preto) 60%, #2a0000 100%);
+  border: 2px solid var(--vitoria-vermelho);
+  border-radius: 12px;
+  padding: 30px;
+  max-width: 450px;
+  margin: 40px auto;
+  box-shadow: 0 10px 25px rgba(201, 0, 0, 0.25);
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  color: var(--vitoria-branco);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Faixa listrada no topo simulando a camisa */
+.vitoria-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--vitoria-vermelho),
+    var(--vitoria-vermelho) 30px,
+    var(--vitoria-preto) 30px,
+    var(--vitoria-preto) 60px
+  );
+}
+
+/* Títulos */
+.vitoria-titulo {
+  color: var(--vitoria-dourado);
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 22px;
+  margin-top: 10px;
+  margin-bottom: 25px;
+  border-bottom: 2px solid var(--vitoria-vermelho);
+  padding-bottom: 12px;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+/* Estrutura do Formulário */
+.vitoria-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Campos de Digitação (Inputs) */
+.vitoria-input {
+  padding: 14px;
+  border-radius: 6px;
+  border: 1px solid rgba(201, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.6);
+  color: var(--vitoria-branco);
+  font-size: 16px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.vitoria-input::placeholder {
+  color: #aaaaaa;
+}
+
+.vitoria-input:focus {
+  border-color: var(--vitoria-vermelho);
+  box-shadow: 0 0 8px rgba(201, 0, 0, 0.4);
+}
+
+/* Botão de Adicionar */
+.vitoria-botao {
+  background-color: var(--vitoria-vermelho);
+  color: var(--vitoria-branco);
+  border: none;
+  padding: 15px;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.vitoria-botao:hover {
+  background-color: var(--vitoria-dourado);
+  color: var(--vitoria-preto);
+  transform: translateY(-2px);
+}
+
+/* Linha Divisória Invisível (já substituída pelo border-bottom do título, mas mantida para estrutura) */
+.vitoria-linha {
+  display: none; 
+}
+
+/* Lista da Escalação */
+.vitoria-lista {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Item da Lista (Cada Jogador) */
+.vitoria-item {
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 12px 15px;
+  border-radius: 6px;
+  border-left: 4px solid var(--vitoria-vermelho);
+  transition: transform 0.2s ease, border-color 0.2s, background-color 0.2s;
+}
+
+.vitoria-item:hover {
+  transform: translateX(5px);
+  border-left-color: var(--vitoria-dourado);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Bolinha com o Número da Camisa */
+.vitoria-numero {
+  background-color: var(--vitoria-vermelho);
+  color: var(--vitoria-branco);
+  font-weight: bold;
+  font-size: 16px;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin-right: 15px;
+  border: 2px solid var(--vitoria-preto);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+/* Nome do Jogador Escalonado */
+.vitoria-nome {
+  font-size: 18px;
+  text-transform: capitalize;
+  letter-spacing: 0.5px;
+}

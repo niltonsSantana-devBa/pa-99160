@@ -1,0 +1,64 @@
+/* Reseta as margens padrão do navegador para o fundo ocupar 100% da tela */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  /* Cor de fundo para garantir que não fique branco enquanto carrega */
+  background-image: url('./assets/fundo.jpg');
+}
+
+/* O fundo principal (A casa do Leão) */
+.app-leao {
+  /* Gradiente radial: um "brilho" vermelho escuro no topo que some para o preto */
+ 
+  min-height: 100vh; /* Garante que pegue a altura toda da tela */
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Título de destaque (O Maior do Nordeste) */
+.titulo-principal {
+  color: #cba85b; /* Dourado */
+  text-transform: uppercase;
+  font-size: 3rem; /* Tamanho grande */
+  font-weight: 900;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 40px;
+  letter-spacing: 2px;
+  /* Sombreamento rubro-negro para o texto saltar na tela */
+  text-shadow: 3px 3px 0px #c90000, 0 0 20px rgba(201, 0, 0, 0.5);
+}
+
+/* Container para organizar os componentes */
+.conteudo-app {
+  display: flex;
+  flex-direction: row; /* Força ficar um ao lado do outro */
+  justify-content: center; 
+  align-items: stretch; /* Faz com que todos os cartões tenham a mesma altura */
+  flex-wrap: wrap; /* Se a tela for pequena, joga pra baixo pra não quebrar o site */
+  gap: 30px; /* Espaço entre os componentes */
+  width: 100%;
+  max-width: 1200px; 
+}
+
+/* O SEGREDO DO ALINHAMENTO PERFEITO */
+/* Essa regra pega os três componentes dentro do conteudo-app e iguala eles */
+.conteudo-app > * {
+  flex: 1; /* Obriga todos a dividirem o espaço igualmente (33.3% para cada) */
+  min-width: 300px; /* Garante que não fiquem esmagados em telas médias */
+  margin: 0; /* Remove margens extras que os componentes possam ter individualmente */
+}
+
+/* Responsividade: Diminui o título no celular */
+@media (max-width: 600px) {
+  .titulo-principal {
+    font-size: 2rem;
+  }
+}

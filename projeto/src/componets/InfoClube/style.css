@@ -1,0 +1,72 @@
+/* Paleta Oficial do Leão */
+:root {
+  --vitoria-vermelho: #c90000;
+  --vitoria-preto: #111111;
+  --vitoria-branco: #ffffff;
+  --vitoria-dourado: #cba85b;
+}
+
+/* O Cartão de Informações (A Carteirinha) */
+.info-aluno {
+  background: linear-gradient(135deg, var(--vitoria-preto) 60%, #2a0000 100%);
+  border: 2px solid var(--vitoria-vermelho);
+  border-radius: 12px;
+  padding: 30px;
+  max-width: 400px;
+  margin: 40px auto;
+  box-shadow: 0 10px 25px rgba(201, 0, 0, 0.25);
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  color: var(--vitoria-branco);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Faixa listrada no topo do cartão para lembrar a camisa */
+.info-aluno::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--vitoria-vermelho),
+    var(--vitoria-vermelho) 30px,
+    var(--vitoria-preto) 30px,
+    var(--vitoria-preto) 60px
+  );
+}
+
+/* Título */
+.info-aluno h2 {
+  color: var(--vitoria-dourado);
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 22px;
+  margin-top: 10px;
+  margin-bottom: 25px;
+  border-bottom: 2px solid var(--vitoria-vermelho);
+  padding-bottom: 12px;
+  letter-spacing: 1px;
+}
+
+/* Estilo das linhas de informação (Nome, Idade, Curso) */
+.info-aluno p {
+  font-size: 18px;
+  line-height: 1.5;
+  margin: 12px 0;
+  background-color: rgba(255, 255, 255, 0.05); /* Fundo levemente claro */
+  padding: 12px 15px;
+  border-radius: 6px;
+  border-left: 4px solid var(--vitoria-vermelho); /* Barrinha vermelha na lateral */
+  text-transform: capitalize; /* Garante que a primeira letra fique maiúscula */
+  transition: transform 0.2s ease;
+}
+
+/* Efeito ao passar o mouse na informação */
+.info-aluno p:hover {
+  transform: translateX(5px);
+  border-left-color: var(--vitoria-dourado);
+  background-color: rgba(255, 255, 255, 0.1);
+}
