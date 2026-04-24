@@ -1,0 +1,45 @@
+/* =========================================
+   RESET E CONTAINER PRINCIPAL (FOOTER)
+   ========================================= */
+footer {
+  width: 100%;
+  background: rgba(5, 10, 18, 0.9); /* Fundo ligeiramente mais escuro que o header para dar peso */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(0, 212, 255, 0.15); /* Borda neon no topo */
+  box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 212, 255, 0.05);
+  font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  padding: 2.5rem 0;
+  margin-top: auto; /* Útil se o contêiner pai for flex/grid para empurrar o footer para baixo */
+}
+
+footer > div {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  text-align: center;
+  color: #8b9bb4; /* Texto principal em cinza azulado suave */
+  font-size: 0.9rem;
+  line-height: 1.8; /* Espaçamento confortável entre as linhas */
+  letter-spacing: 0.5px;
+}
+
+/* =========================================
+   DESTAQUES DE TEXTO (NOME DA EMPRESA)
+   ========================================= */
+footer > div strong {
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  /* Reutilizando o gradiente metálico/neon do logo para criar identidade visual */
+  background: linear-gradient(90deg, #ffffff, #00d4ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: text-shadow 0.3s ease;
+}
+
+/* Interação sutil de brilho no nome da empresa ao passar o mouse */
+footer > div:hover strong {
+  text-shadow: 0 0 10px rgba(0, 212, 255, 0.4);
+}

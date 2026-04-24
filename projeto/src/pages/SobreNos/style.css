@@ -1,0 +1,113 @@
+/* =========================================
+   CONTAINER PRINCIPAL (CARD DO FORMULÁRIO)
+   ========================================= */
+.contact-container {
+  max-width: 600px; /* Um pouco mais estreito que a página sobre nós */
+  margin: 4rem auto;
+  padding: 3rem;
+  background: rgba(15, 20, 35, 0.6);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(0, 212, 255, 0.02);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  text-align: center;
+  
+  /* Animação de entrada vindo de baixo */
+  animation: slideUp 0.6s ease-out;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================
+   TÍTULO (H1)
+   ========================================= */
+.contact-container h1 {
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+  background: linear-gradient(90deg, #ffffff, #00d4ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 1px;
+}
+
+/* =========================================
+   FORMULÁRIO E CAMPOS (INPUT / TEXTAREA)
+   ========================================= */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* Espaçamento entre os campos */
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  background: rgba(5, 10, 18, 0.5); /* Fundo escuro e levemente transparente para os inputs */
+  border: 1px solid rgba(139, 155, 180, 0.3); /* Borda cinza azulada sutil */
+  border-radius: 8px;
+  padding: 1rem;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+/* Alterando a cor do placeholder para não ficar muito forte */
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #61748f;
+}
+
+/* Efeito ao clicar no campo (Focus) */
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #00d4ff; /* A borda acende em neon */
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.2);
+  background: rgba(5, 10, 18, 0.8);
+}
+
+/* Impede que o usuário redimensione o textarea quebrando o layout */
+.contact-form textarea {
+  resize: vertical;
+}
+
+/* =========================================
+   BOTÃO DE ENVIAR (SUBMIT)
+   ========================================= */
+.contact-form button {
+  background: linear-gradient(90deg, rgba(0,212,255,0.1), rgba(0,212,255,0.2));
+  border: 1px solid #00d4ff;
+  color: #ffffff;
+  padding: 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.1);
+  margin-top: 1rem;
+}
+
+/* Efeito Hover do botão (Futurista e Responsivo) */
+.contact-form button:hover {
+  background: #00d4ff; /* Preenche o botão com a cor neon */
+  color: #050a12; /* Letra fica escura para dar contraste */
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.6); /* Brilho intenso */
+  transform: translateY(-2px); /* Botão "pula" levemente para cima */
+}
+/* No style.css do Sobre Nós e Fale Conosco */
+section, .contact-container {
+  max-width: 90%; /* Em vez de um valor fixo como 800px */
+  width: 1200px;  /* Define um limite máximo maior para telas grandes */
+  margin: 4rem auto;
+  /* ... resto do código ... */
+}

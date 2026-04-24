@@ -1,0 +1,118 @@
+/* =========================================
+   RESET E CONTAINER PRINCIPAL (HEADER)
+   ========================================= */
+header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background: rgba(10, 15, 26, 0.85); /* Fundo escuro azulado translúcido */
+  backdrop-filter: blur(12px); /* Efeito de vidro temperado (Glassmorphism) */
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 212, 255, 0.15); /* Borda sutil neon */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 212, 255, 0.05);
+  z-index: 1000;
+  font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+header > div {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header a {
+  text-decoration: none;
+}
+
+/* =========================================
+   LOGO E NOME DA EMPRESA
+   ========================================= */
+header div > a {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+header div > a img {
+  width: 40px;
+  height: 40px;
+  filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.6)); /* Brilho tecnológico na logo */
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+header div > a:hover img {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 12px rgba(0, 212, 255, 1));
+}
+
+header div > a span {
+  color: #ffffff;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  /* Gradiente metálico/neon no texto */
+  background: linear-gradient(90deg, #ffffff, #00d4ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* =========================================
+   NAVEGAÇÃO (LINKS)
+   ========================================= */
+header nav {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+header nav a {
+  color: #8b9bb4; /* Cor de texto inativa (cinza azulado) */
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  position: relative;
+  padding: 0.5rem 0;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Efeito de Hover (Futurista) */
+header nav a:hover {
+  color: #00d4ff;
+  text-shadow: 0 0 10px rgba(0, 212, 255, 0.6);
+}
+
+/* Linha animada embaixo dos links */
+header nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #00d4ff;
+  box-shadow: 0 0 8px #00d4ff;
+  transition: width 0.3s ease;
+}
+
+header nav a:hover::after {
+  width: 100%;
+}
+
+/* ESTADO ATIVO (NavLink)
+   O React Router DOM adiciona automaticamente a classe "active" 
+   no NavLink da página em que o usuário está no momento.
+*/
+header nav a.active {
+  color: #ffffff;
+  text-shadow: 0 0 12px rgba(0, 212, 255, 0.8);
+}
+
+header nav a.active::after {
+  width: 100%;
+}

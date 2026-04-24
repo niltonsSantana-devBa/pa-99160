@@ -1,0 +1,61 @@
+/* =========================================
+   CONTAINER DA HOME (HERO SECTION)
+   ========================================= */
+/* No style.css da HOME */
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 160px); /* 100% da altura menos o espaço do header/footer */
+  /* ... resto do código ... */
+}
+/* =========================================
+   TÍTULO PRINCIPAL (H1)
+   ========================================= */
+.home-container h1 {
+  font-size: 4.5rem; /* Tamanho bem grande, de impacto */
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: center;
+  margin: 0;
+  padding: 0 1rem;
+  
+  /* Gradiente metálico/neon mais intenso para o título principal */
+  background: linear-gradient(135deg, #ffffff 20%, #00d4ff 80%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  /* Sombra/Brilho externo aplicado no elemento inteiro */
+  filter: drop-shadow(0 0 15px rgba(0, 212, 255, 0.3));
+  
+  /* Animação contínua de flutuação e pulsação do brilho */
+  animation: floatTitle 4s ease-in-out infinite;
+}
+
+/* =========================================
+   ANIMAÇÕES
+   ========================================= */
+@keyframes floatTitle {
+  0% { 
+    transform: translateY(0px); 
+    filter: drop-shadow(0 0 15px rgba(0, 212, 255, 0.3));
+  }
+  50% { 
+    transform: translateY(-10px); /* Sobe um pouquinho */
+    filter: drop-shadow(0 0 30px rgba(0, 212, 255, 0.6)); /* O brilho aumenta */
+  }
+  100% { 
+    transform: translateY(0px); 
+    filter: drop-shadow(0 0 15px rgba(0, 212, 255, 0.3));
+  }
+}
+
+/* =========================================
+   RESPONSIVIDADE (Telas Menores)
+   ========================================= */
+@media (max-width: 768px) {
+  .home-container h1 {
+    font-size: 2.8rem; /* Diminui a fonte no celular para não quebrar a tela */
+  }
+}

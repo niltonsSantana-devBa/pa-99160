@@ -1,0 +1,109 @@
+/* =========================================
+   CONTAINER PRINCIPAL (CARD DE VIDRO)
+   ========================================= */
+section {
+  max-width: 800px;
+  margin: 4rem auto; /* Centraliza horizontalmente e dá espaço em cima/embaixo */
+  padding: 3rem;
+  background: rgba(15, 20, 35, 0.6); /* Fundo escuro azulado bem transparente */
+  border: 1px solid rgba(0, 212, 255, 0.2); /* Borda fina neon */
+  border-radius: 16px; /* Bordas arredondadas modernas */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(0, 212, 255, 0.02);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  
+  /* Animação de entrada suave */
+  animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================
+   TÍTULO (H1)
+   ========================================= */
+section h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(90deg, #ffffff, #00d4ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  display: inline-block;
+  letter-spacing: 1px;
+}
+
+/* Detalhe de linha luminosa abaixo do título */
+section h1::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background-color: #00d4ff;
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.8);
+  border-radius: 2px;
+  transition: width 0.4s ease;
+}
+
+section:hover h1::after {
+  width: 100%; /* A linha cresce quando o usuário passa o mouse pelo card */
+}
+
+/* =========================================
+   TEXTO (PARÁGRAFO)
+   ========================================= */
+section p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #8b9bb4; /* Cor que não cansa a visão */
+  margin-bottom: 2.5rem;
+}
+
+/* =========================================
+   LISTA DE DIFERENCIAIS (UL / LI)
+   ========================================= */
+section ul {
+  list-style: none; /* Remove as bolinhas padrão do navegador */
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+section li {
+  position: relative;
+  padding-left: 2.5rem;
+  font-size: 1.05rem;
+  color: #c0d1e2;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Ícone futurista no lugar das bolinhas da lista */
+section li::before {
+  content: '▹'; /* Símbolo de seta/play */
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #00d4ff;
+  font-size: 1.5rem;
+  text-shadow: 0 0 8px rgba(0, 212, 255, 0.6); /* Efeito neon no ícone */
+}
+
+/* Interação ao passar o mouse por um item da lista */
+section li:hover {
+  transform: translateX(10px); /* Dá um leve empurrãozinho para a direita */
+  color: #ffffff;
+}
+/* No style.css do Sobre Nós e Fale Conosco */
+section, .contact-container {
+  max-width: 90%; /* Em vez de um valor fixo como 800px */
+  width: 1200px;  /* Define um limite máximo maior para telas grandes */
+  margin: 4rem auto;
+  /* ... resto do código ... */
+}
