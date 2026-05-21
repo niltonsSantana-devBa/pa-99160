@@ -1,23 +1,27 @@
+
 const { DataTypes } = require('sequelize')
 const sequelize = require('../config/db')
 
-
 // ORM - MAPEANDO CLASSE PARA RABELA NO BANCO DE DADOS.
-const Curso = sequelize.define('Curso', {
+const clientes = sequelize.define('clientes', {
     nome: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    unidade: {
+    email: {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true
     },
-    duracao: {
-        type: DataTypes.INTEGER,
+    telefone: {
+        type: DataTypes.STRING,
         allowNull: false
+    },
+    cpf: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true
     }
-
 })
 
-module.exports = Curso;
+module.exports = clientes;

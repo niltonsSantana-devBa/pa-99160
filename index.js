@@ -2,9 +2,9 @@
 const express = require('express')
 const cors = require('cors')
 const sequelize = require('./config/db')
-const Curso = require('./model/cursoModel')
-const Aluno = require('./model/alunoModel')
-const Professor = require('./model/professorModel')
+const funcionarios = require('./model/funcionariosModel')
+const Aluno = require('./model/clientesModel')
+const produto = require('./model/produtosModel')
 
 // CONFIGURANDO SERVIDOR EXPRESS.
 
@@ -16,9 +16,9 @@ const port = 3000
 
 // DEFININDO ROTAS.
 
-require('./routes/cursoRoutes')(router, Curso)
-require('./routes/alunoRoutes')(router, Aluno)
-require('./routes/professorRoutes')(router, Professor)
+require('./routes/funcionariosRoutes')(router, funcionarios)
+require('./routes/clientesRoutes')(router, Aluno)
+require('./routes/produtosRoutes')(router, produto)
 
 
 
