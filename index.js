@@ -29,5 +29,5 @@ sequelize.sync().then(() => {
         console.log('✳️ Banco de dados sincronizado.')
     })
 }).catch((erro) => {
-    console.error('❌ Erro ao conectar ou sincronizar com o banco de dados')
+    console.error('❌ Erro ao conectar ou sincronizar com o banco de dados:', erro)
 })

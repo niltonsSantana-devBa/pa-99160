@@ -1,6 +1,6 @@
 const { Sequelize } = require('sequelize')
 // CONFIGURANDO CONEXÃO COM BANCO DE DADOS.
-const sequelize = new Sequelize('db_api2', 'root', '', {
+const sequelize = new Sequelize('db_api', 'root', '', {
     host: 'localhost',
     dialect: 'mysql'
 })
