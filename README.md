@@ -1,22 +1,7 @@
-# GIT
+# Projeto
 
-## COMANDOS BASICOS
+Criar projeto 
+npm init -y
 
-Trazendo possíveis mudanças dp GITHUb
-```
-git pull
-```
-
-Adicionar arquivos para commit:
-```
-git add
-```
-
-Criar pontos de versionamento:
-```
-git commit -m "Comandos básicos do git."
-```
-
-Enviar alterações para GitHub:
-```
-git push
+Instalar dependências:
+nmp i expless sequelize mysql2 cors

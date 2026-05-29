@@ -1,0 +1,14 @@
+.heater { 
+    background-color: #f5f5f5; 
+    padding: 20px; 
+    border-radius: 5px; 
+    text-align: center; 
+    margin-bottom: 20px; 
+    align-items: center;
+}
+
+nav a {
+    color: #333;
+    text-decoration: none;
+    margin: 0 10px;
+}
