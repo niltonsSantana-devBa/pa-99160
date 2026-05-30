@@ -6,9 +6,9 @@ import HomePage from './Pages/HomePage'
 import CadastroPage from './Pages/CadastroPage'
 import ListaPage from './Pages/ListaPage'
 import { Routes, Route } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify'
 
 function App() {
- 
 
   return (
     <>
@@ -20,8 +20,9 @@ function App() {
           <Route path="/lista" element={<ListaPage />} />
         </Routes>
       </main>
-      <Footer></Footer>
-
+      <Footer/ >
+          <ToastContainer autoClose={3000} />
+      
     </>
   )
 }
